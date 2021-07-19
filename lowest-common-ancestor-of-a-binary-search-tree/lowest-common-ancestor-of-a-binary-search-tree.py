@@ -9,17 +9,14 @@
 class Solution:
     
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':     
-        if not root or root == q or root == p:
-            return root
+        root_val = root.val
+        p_val = p.val
+        q_val = q.val
         
-        left = self.lowestCommonAncestor(root.left, p, q)
-        right = self.lowestCommonAncestor(root.right, p, q)
-        
-        if left and right:
-            return root
-        elif left:
-            return left
-        elif right:
-            return right
+        if p_val > root_val and q_val > root_val:
+            return self.lowestCommonAncestor(root.right, p, q);
+        elif p_val < root_val and q_val < root_val:
+            return self.lowestCommonAncestor(root.left, p, q);
         else:
-            return None
+            return root;
+        
