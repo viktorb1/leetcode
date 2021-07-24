@@ -6,7 +6,8 @@
 class Solution:
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
         
-        newList = None
+        newList = ListNode(0)
+        curr = newList
         
         if not l1 and not l2:
             return None
@@ -14,15 +15,6 @@ class Solution:
             return l2
         elif not l2:
             return l1
-        
-        if l1.val < l2.val:
-            newList = ListNode(l1.val)
-            l1 = l1.next
-        else:
-            newList = ListNode(l2.val)
-            l2 = l2.next
-            
-        curr = newList
         
         while l1 and l2:
             if l1.val < l2.val:
@@ -43,5 +35,5 @@ class Solution:
             curr.next = l2
             curr = curr.next
             l2 = l2.next
-             
-        return newList
+        
+        return newList.next
