@@ -17,11 +17,7 @@ class Solution:
                 total = int(b[j]) + remainder
             
             newStr = str(total % 2) + newStr
-            
-            if total > 1:
-                remainder = 1
-            else:
-                remainder = 0
+            remainder = total//2
                 
             i -= 1
             j -= 1
