@@ -4,26 +4,23 @@ class Solution:
         j = len(b) - 1
         remainder = 0
         newStr = ""
-
         
-        while i >= 0 or j >= 0:
+        while i >= 0 or j >= 0 or remainder == 1:
             total = 0
-
-            if i >= 0 and j >= 0:
+            
+            while i >= 0 and j >= 0:
                 total = int(a[i]) + int(b[j]) + remainder
             elif i >= 0:
                 total = int(a[i]) + remainder
-            else:
+            elif j >= 0:
                 total = int(b[j]) + remainder
+            else:
+                total = remainder
             
             newStr = str(total % 2) + newStr
             remainder = total//2
-                
             i -= 1
             j -= 1
             
-        
-        if remainder == 1:
-            newStr = "1" + newStr
                 
         return newStr
