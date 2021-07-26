@@ -1,11 +1,10 @@
 class Solution:
     def plusOne(self, digits: List[int]) -> List[int]:
-        last = len(digits)-1
-        if digits[last] < 9:
-            digits[last] += 1
-        else:
-            j = last
-            
+        j = len(digits) - 1
+        
+        if digits[j] < 9:
+            digits[j] += 1
+        else:        
             while digits[j] == 9:
                 digits[j] = 0
                 j -= 1
