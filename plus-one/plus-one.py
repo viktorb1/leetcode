@@ -4,14 +4,15 @@ class Solution:
         if digits[last] < 9:
             digits[last] += 1
         else:
-            for i in range(len(digits) - 1, -1, -1 ):
-                if digits[i] == 9:
-                    digits[i] = 0;
+            j = last
+            
+            while digits[j] == 9:
+                digits[j] = 0
+                j -= 1
                     
-                    if i == 0:
-                        return [1] + digits
-                else:
-                    digits[i] += 1
-                    break
+            if j == -1:
+                return [1] + digits
+            else:
+                digits[j] += 1
         
         return digits
