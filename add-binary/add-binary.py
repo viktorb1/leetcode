@@ -15,10 +15,9 @@ class Solution:
             if remainder == 1:
                 total += remainder
             
-            newStr = str(total % 2) + newStr
+            newStr += str(total % 2)
             remainder = total//2
             i -= 1
             j -= 1
-            
                 
-        return newStr
+        return newStr[::-1]
