@@ -5,7 +5,7 @@ class Solution:
             return 0
         elif i == n:
             return 1 # we stayed in bounds, so it's a valid sequence to climb the stairs
-        elif memo[i] > 0: # save previously calculated values, 'memoization'
+        elif memo[i] > 0: # previously calculated values, 'memoization'
             return memo[i]
         else:
             memo[i] = self.climbStairsHelper(i+1, n, memo) + self.climbStairsHelper(i+2, n, memo)
