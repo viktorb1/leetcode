@@ -2,17 +2,13 @@ class Solution:
     def getRow(self, rowIndex: int) -> List[int]:
         
         startRow = [1]
-        nextRow = []
         
         for i in range(rowIndex):
-            curr = [0] + startRow + [0]
+            startRow = [0] + startRow + [0]
             
-            for j in range(len(curr)-1):
-                nextRow.append(curr[j] + curr[j+1])
-                            
-            startRow = nextRow.copy()
-            nextRow.clear()
+            for j in range(len(startRow)-1):
+                startRow[j] = startRow[j] + startRow[j+1]    
             
+            startRow.pop()
         
         return startRow
-            
