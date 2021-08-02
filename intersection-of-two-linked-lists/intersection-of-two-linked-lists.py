@@ -8,7 +8,6 @@ class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
         currA = headA
         currB = headB
-        
         diff = self.getLength(headA) - self.getLength(headB)
         
         if diff > 0 or diff < 0:
