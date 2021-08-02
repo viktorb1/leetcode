@@ -8,12 +8,10 @@ class Solution:
             while i % 10 == 0:
                 numtens += 1
                 i //= 10
-            while i % 2 == 0:
-                numtwos += 1
-                i //= 2
             while i % 5 == 0:
                 numfives += 1
                 i //= 5
-        
+            if i % 2 == 0:
+                numtwos += i // 2
+
         return min(numtwos, numfives) + numtens
-        
