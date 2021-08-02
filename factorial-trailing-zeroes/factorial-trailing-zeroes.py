@@ -3,7 +3,7 @@ class Solution:
         numfives = 0
         numtens = 0
         
-        for i in range(2, n+1):
+        for i in range(5, n+1):
             while i % 10 == 0:
                 numtens += 1
                 i //= 10
