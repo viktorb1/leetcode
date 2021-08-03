@@ -8,6 +8,5 @@ class Solution:
                 n //= 3
             else:
                 return False
-            
         
         return True
