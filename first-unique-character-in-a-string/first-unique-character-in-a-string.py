@@ -1,11 +1,23 @@
 class Solution:
     def firstUniqChar(self, s: str) -> int:
         
+        seen = {}
+        
         for i in range(len(s)):
-            for j in range(len(s)):
-                if s[j] == s[i] and j != i:
-                    break
-                elif j == len(s) - 1:
-                    return i
+            if not s[i] in seen:
+                seen[s[i]] = Entry(i)
+            else:
+                seen[s[i]].num += 1
+                
+                
+        for i in seen:
+            if seen[i].num == 1:
+                return seen[i].idx
             
         return -1
+    
+
+class Entry:
+    def __init__(self, i: int): 
+        self.num = 1
+        self.idx = i
