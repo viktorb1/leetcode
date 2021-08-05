@@ -9,11 +9,10 @@ class Solution:
                 return False
             else:
                 seen.add(n)
-            
-            split = list(str(n))
+
+            j = n
             n = 0
             
-            for i in split:
-                n += pow(int(i), 2)
-        
-        
+            while j > 0:
+                n += pow(j % 10, 2)
+                j //= 10
