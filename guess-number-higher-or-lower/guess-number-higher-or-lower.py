@@ -18,3 +18,32 @@ class Solution:
                 pick = (low + high) // 2
             elif guess(pick) == 0:
                 return pick
+    
+# Alternative solution
+# More messy to read, but faster due to binary search implementation
+class Solution:
+    def isPerfectSquare(self, num: int) -> bool:
+        low = 1
+        i = num // 8
+        high = num
+        
+        
+        while 1:
+            if i*i == num:
+                return True
+            elif i*i < num:
+                if (i+1)*(i+1) > num:
+                    return False
+                
+                low = i + 1
+                i = (low + high) // 2
+                
+            elif i*i > num:
+                if (i-1)*(i-1) < num:
+                    return False
+                
+                high = i - 1
+                i = (low + high) // 2
+        
+        
+        return False
