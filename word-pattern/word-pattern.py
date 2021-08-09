@@ -2,7 +2,7 @@ class Solution:
     def wordPattern(self, pattern: str, s: str) -> bool:
         s = s.split(' ')
         mustMatch = {}
-        alreadySeen = set()
+        seen = set()
         
         if len(s) != len(pattern):
             return False
@@ -13,7 +13,7 @@ class Solution:
                     return False
                 
                 mustMatch[pattern[i]] = s[i]
-                alreadySeen.add(s[i])
+                seen.add(s[i])
                 
         for i in range(len(s)):
             if mustMatch[pattern[i]] != s[i]:
