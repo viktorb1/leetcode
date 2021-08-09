@@ -10,10 +10,7 @@ class Solution:
                     total +=1
                 
                 i //= 2
-                    
-            out.append(total)
             
+            out.append(total)
         
         return out
-            
-            
