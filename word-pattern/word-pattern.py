@@ -14,8 +14,8 @@ class Solution:
                 
                 mustMatch[pattern[i]] = s[i]
                 seen.add(s[i])
-            
-            if mustMatch[pattern[i]] != s[i]:
+            elif mustMatch[pattern[i]] != s[i]:
                 return False
         
         return True
+        
