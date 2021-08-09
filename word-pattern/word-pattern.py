@@ -9,15 +9,13 @@ class Solution:
         
         for i in range(len(s)):
             if pattern[i] not in mustMatch:
-                if s[i] in alreadySeen:
+                if s[i] in seen:
                     return False
                 
                 mustMatch[pattern[i]] = s[i]
                 seen.add(s[i])
-                
-        for i in range(len(s)):
+            
             if mustMatch[pattern[i]] != s[i]:
                 return False
         
         return True
-        
