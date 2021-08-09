@@ -7,7 +7,7 @@ class Solution:
         if len(s) != len(pattern):
             return False
         
-        for i in range(len(s)):
+        for i in range(len(pattern)):
             if pattern[i] not in mustMatch:
                 if s[i] in seen:
                     return False
@@ -18,4 +18,3 @@ class Solution:
                 return False
         
         return True
-        
