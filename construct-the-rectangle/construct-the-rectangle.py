@@ -1,16 +1,8 @@
 class Solution:
-    def constructRectangle(self, area: int) -> List[int]:
-        sol = []
+    def constructRectangle(self, area: int) -> List[int]:        
+        i = ceil(sqrt(area))
         
-        i = 1
+        while area % i != 0:
+            i -= 1
         
-        while i*i <= area:
-            if area % i == 0:
-                if (i > area // i):
-                    sol.append([i , area // i])
-                else:
-                    sol.append([area // i, i])
-            i += 1
-                
-        
-        return sol[-1]
+        return [area // i, i]
