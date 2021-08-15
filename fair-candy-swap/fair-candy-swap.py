@@ -2,16 +2,16 @@ class Solution:
     def fairCandySwap(self, aliceSizes: List[int], bobSizes: List[int]) -> List[int]:
         aliceCount = 0
         bobCount = 0
-        alice = collections.Counter()
-        bob = collections.Counter()
+        alice = set()
+        bob = set()
         
         for i in aliceSizes:
             aliceCount += i
-            alice[i] += 1
+            alice.add(i)
             
         for i in bobSizes:
             bobCount += i
-            bob[i] += 1
+            bob.add(i)
         
         diff = (bobCount - aliceCount) // 2
         
