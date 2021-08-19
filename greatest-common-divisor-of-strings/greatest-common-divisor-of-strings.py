@@ -1,7 +1,6 @@
 class Solution:
     def gcdOfStrings(self, str1: str, str2: str) -> str:
-        pattern = ""
-        
+
         if len(str2) > len(str1):
             str1, str2 = str2, str1
         
