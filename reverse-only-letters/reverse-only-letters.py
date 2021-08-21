@@ -11,13 +11,10 @@ class Solution:
             if s[end].isalpha():
                 count += 1
                 sol += s[end]
-            
-            while count < len(s) and not s[count].isalpha():
-                sol += s[count] 
-                count += 1
-            
+         
+        
+        while count < len(s) and not s[count].isalpha():
+            sol += s[count]
+            count += 1
+        
         return sol
-            
-                
-                
-            
