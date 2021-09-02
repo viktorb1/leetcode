@@ -7,3 +7,5 @@ class Solution:
                 count += 1
               
         return count
+    
+# the code runs faster if you use built in functions like: return len(s.split())
