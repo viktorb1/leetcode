@@ -6,7 +6,6 @@ class Solution:
         sol = []
         
         for i in combinations(poss, turnedOn):
-                    
             hour = 0
             minute = 0
             
