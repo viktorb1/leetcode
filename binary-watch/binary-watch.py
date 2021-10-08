@@ -4,7 +4,6 @@ class Solution:
     def readBinaryWatch(self, turnedOn: int) -> List[str]:
         poss = [80, 40, 20, 10, 32, 16, 8, 4, 2, 1]
         sol = []
-        print(list(combinations(poss, turnedOn)))
         
         for i in combinations(poss, turnedOn):
                     
