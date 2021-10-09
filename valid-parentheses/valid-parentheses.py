@@ -1,19 +1,16 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        paren = [];
+        track = []
+        pairs = {'{':'}', '(':')', '[':']'}
         
         for i in s:
-            if i == '(' or i == '[' or i == '{':
-                paren.append(i);
+            if i in pairs.keys():
+                track.append(i)
             else:
-                if not paren:
-                    return False
-                
-                curr = paren.pop();
-                
-                if (i == ')' and curr != '(' 
-                    or i == ']' and curr != '[' 
-                    or i == '}' and curr != '{'):
-                    return False
+                if len(track) == 0 or i != pairs[track.pop()]:
+                    return False 
         
-        return True if not paren else False
+        if len(track) != 0:
+            return False
+        
+        return True
