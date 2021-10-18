@@ -14,7 +14,7 @@ class Solution:
         else:
             for coin in coins:
                 if coin <= amount:
-                    cal = self.coinChangeHelper(coins, amount - coin, memo)
+                    cal = memo[amount-coin] if amount - coin in memo else self.coinChangeHelper(coins, amount - coin, memo)
 
                     if cal != -1:
                         minCoins = min(minCoins, cal + 1)
