@@ -6,12 +6,14 @@ class Solution:
     def coinChangeHelper(self, coins: List[int], amount: int, memo: Dict[int, int]) -> int:
         if amount == 0:
             return 0
+        elif amount in memo:
+            return memo[amount]
         
         minCoins = float('inf') 
         
         for coin in coins:
             if coin <= amount:
-                cal = memo[amount-coin] if amount - coin in memo else self.coinChangeHelper(coins, amount - coin, memo)
+                cal = self.coinChangeHelper(coins, amount - coin, memo)
 
                 if cal != -1:
                     minCoins = min(minCoins, cal + 1)
