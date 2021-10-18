@@ -1,11 +1,7 @@
 class Solution:
-    
-    
     def coinChange(self, coins: List[int], amount: int) -> int:
         memo = {}
-        x = self.coinChangeHelper(coins, amount, memo)
-        memo.clear()
-        return x
+        return self.coinChangeHelper(coins, amount, memo)
 
     def coinChangeHelper(self, coins: List[int], amount: int, memo: Dict[int, int]) -> int:
         if amount == 0:
@@ -26,5 +22,3 @@ class Solution:
         
         memo[amount] = minCoins
         return -1 if minCoins == float('inf') else minCoins
-    
-    
