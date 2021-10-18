@@ -7,7 +7,7 @@ class Solution:
         memo.clear()
         return x
 
-    def coinChangeHelper(self, coins: List[int], amount: int, memo: Dict) -> int:
+    def coinChangeHelper(self, coins: List[int], amount: int, memo: Dict[int, int]) -> int:
         if amount == 0:
             return 0
         
