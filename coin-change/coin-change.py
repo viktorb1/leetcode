@@ -9,16 +9,12 @@ class Solution:
         
         minCoins = float('inf') 
         
-        if amount in memo:
-            return memo[amount]
-        else:
-            for coin in coins:
-                if coin <= amount:
-                    cal = memo[amount-coin] if amount - coin in memo else self.coinChangeHelper(coins, amount - coin, memo)
+        for coin in coins:
+            if coin <= amount:
+                cal = memo[amount-coin] if amount - coin in memo else self.coinChangeHelper(coins, amount - coin, memo)
 
-                    if cal != -1:
-                        minCoins = min(minCoins, cal + 1)
-        
+                if cal != -1:
+                    minCoins = min(minCoins, cal + 1)
         
         memo[amount] = minCoins
         return -1 if minCoins == float('inf') else minCoins
