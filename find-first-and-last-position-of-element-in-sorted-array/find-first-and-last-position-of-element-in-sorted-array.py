@@ -12,7 +12,7 @@ class Solution:
             elif nums[mid] > target:
                 high = mid - 1
             elif nums[mid] == target:
-                rang[0], rang[1] = mid, mid
+                rang = [mid, mid]
                 
                 while rang[0] > 0 and nums[rang[0]-1] == nums[mid]:
                     rang[0] -= 1
