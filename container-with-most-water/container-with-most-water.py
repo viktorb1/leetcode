@@ -2,9 +2,7 @@ class Solution:
     def maxArea(self, height: List[int]) -> int:
         l = 0
         r = len(height) - 1
-        
         area = min(height[l], height[r]) * (r - l)
-        maxHeight = 0
         
         while l < r:
             new_area = min(height[l], height[r]) * (r - l)
