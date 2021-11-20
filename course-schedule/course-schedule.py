@@ -5,7 +5,7 @@ class Solution:
         for c, p in prerequisites:
             d[c].add(p)
 
-        status = defaultdict(int)
+        status = [0] * numCourses
                    
         def checkpath(c):
             status[c] = -1
@@ -23,7 +23,6 @@ class Solution:
             
             status[c] = 1
             return True
-        
         
         for c in d:
             if not checkpath(c):
