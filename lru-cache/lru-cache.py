@@ -20,7 +20,7 @@ class LRUCache:
     
     def put(self, key: int, value: int) -> None:
         if key in self.d:
-            self.q.remove(self.d[key])
+            self.q.remove(self.d[key]) # bottleneck
             self.d[key] = [key, value]
             self.q.append(self.d[key])
             return
