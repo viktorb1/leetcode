@@ -20,10 +20,8 @@ class LRUCache:
     
     def put(self, key: int, value: int) -> None:
         if key in self.d:
-            self.q.remove(self.d[key]) # bottleneck
-            self.d[key] = [key, value]
-            self.q.append(self.d[key])
-            return
+            self.q.remove(self.d[key])
+            self.size -= 1
         
         if self.size >= self.capacity:
             x = self.q.popleft()
@@ -33,8 +31,7 @@ class LRUCache:
         self.d[key] = [key, value]
         self.q.append(self.d[key])
         self.size += 1
-        
-        
+          
 
 # Your LRUCache object will be instantiated and called as such:
 # obj = LRUCache(capacity)
