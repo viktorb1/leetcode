@@ -13,7 +13,7 @@ class LRUCache:
         if key in self.d:
             self.q.remove(self.d[key]) # bottleneck
             # we can implement a custom doubly linked list to have 
-            # a reference to the item and delete it in O(1) time
+            # a reference to the node and delete it in O(1) time
             self.q.append(self.d[key])
             return self.d[key][1]
         
