@@ -30,9 +30,8 @@ class LRUCache:
             del self.d[x[0]]
             self.size -= 1
         
-        inp = [key, value]
-        self.q.append(inp)
-        self.d[key] = inp
+        self.d[key] = [key, value]
+        self.q.append(self.d[key])
         self.size += 1
         
         
