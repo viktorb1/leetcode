@@ -24,7 +24,7 @@ class Solution:
         count = 0
         
         for i in range(len(nex)):
-            if cur[:i] + nex[i] + cur[i+1:] == nex:
+            if cur[i] != nex[i]:
                 count += 1
 
         return True if count == 1 else False
