@@ -23,8 +23,11 @@ class Solution:
     def hasSingleDifference(self, cur, nex):
         count = 0
         
+        if cur == nex:
+            return False
+        
         for i in range(len(nex)):
-            if cur[:i] + nex[i] + cur[i+1:] == nex and cur != nex:
+            if cur[:i] + nex[i] + cur[i+1:] == nex:
                 count += 1
 
         return True if count == 1 else False
