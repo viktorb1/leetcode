@@ -5,13 +5,12 @@ class Solution:
         for num in arr:
             if num % 2 == 0:
                 count = 0
-            elif num % 2 == 1:
+            else:
                 count += 1
-            
-            if count == 3:
-                return True
+                
+                if count == 3:
+                    return True
             
         
         return False
             
-                
