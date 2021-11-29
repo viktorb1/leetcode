@@ -12,7 +12,7 @@ class Solution:
     
     
     def inorder(self, root, k, trav):
-        if root:
+        if root and len(trav) < k:
             self.inorder(root.left, k, trav)
             trav.append(root.val)
             self.inorder(root.right, k, trav)
