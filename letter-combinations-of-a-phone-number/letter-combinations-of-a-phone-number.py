@@ -15,11 +15,8 @@ class Solution:
             
         # loop through the remaining digits
         for l, d in enumerate(digits[1:], 1):
-           
             while len(ans[0]) == l:
-                
                 x = ans.popleft()
-
                 for i in char_map[d]:
                     ans.append(x + i)
         
