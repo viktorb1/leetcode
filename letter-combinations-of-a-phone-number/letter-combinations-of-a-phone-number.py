@@ -10,11 +10,11 @@ class Solution:
             for l in char_map[digits[0]]:
                 ans.append(l)
         
-        # loop through the remaining digits
-        for l, d in enumerate(digits[1:], 1):
-            while len(ans[0]) == l:
-                x = ans.popleft()
-                for i in char_map[d]:
-                    ans.append(x + i)
+            # loop through the remaining digits
+            for l, d in enumerate(digits[1:], 1):
+                while len(ans[0]) == l:
+                    x = ans.popleft()
+                    for i in char_map[d]:
+                        ans.append(x + i)
         
         return ans
