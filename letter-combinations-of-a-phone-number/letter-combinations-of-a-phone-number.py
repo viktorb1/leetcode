@@ -5,8 +5,8 @@ class Solution:
         char_map = {'2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl', '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'}
         ans = deque()
         
-        # initially add all letters from first digit (the seed)
         if len(digits) > 0:
+            # initially add all letters from first digit (the seed)
             for l in char_map[digits[0]]:
                 ans.append(l)
         
