@@ -4,15 +4,15 @@ class Solution:
         self.choose([], sorted(nums), ans)
         return ans
     
-    def choose(self, perm, fr, ans):
-        if not fr:
+    def choose(self, perm, nums, ans):
+        if not nums:
             ans.append(perm)
         
         i = 0
-        while i < len(fr):               
-            self.choose(perm + [fr[i]], fr[:i] + fr[i+1:], ans)
+        while i < len(nums):
+            self.choose(perm + [nums[i]], nums[:i] + nums[i+1:], ans)
             
-            while i+1 < len(fr) and fr[i] == fr[i+1]:
+            while i+1 < len(nums) and nums[i] == nums[i+1]:
                 i += 1
-            
+           
             i += 1
