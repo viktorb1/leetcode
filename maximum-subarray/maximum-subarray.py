@@ -62,8 +62,6 @@ def cross(nums):
 def divide_n_conquer(nums):
     if len(nums) == 1:
         return nums[0]
-    elif len(nums) == 0:
-        return 0
     
     l = divide_n_conquer(nums[:len(nums)//2])
     r = divide_n_conquer(nums[len(nums)//2:])
