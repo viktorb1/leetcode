@@ -26,6 +26,7 @@ def max_sum_brute(nums):
 
     return max_sum
 
+
 # O(n) - dynamic programming
 def kadanes_algorithm(nums):
 
