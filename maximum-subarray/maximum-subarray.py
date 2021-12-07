@@ -66,3 +66,8 @@ def divide_n_conquer(nums):
     r = divide_n_conquer(nums[len(nums)//2:])
     c = cross(nums)
     return max(l, r, c)
+
+
+print(max_sum_brute([-2,1,-3,4,-1,2,1,-5,4,12]))
+print(kadanes_algorithm([-2,1,-3,4,-1,2,1,-5,4,12]))
+print(divide_n_conquer([-2,1,-3,4,-1,2,1,-5,4,12]))
