@@ -44,18 +44,17 @@ def kadanes_algorithm(nums):
 def cross(nums):
     m = len(nums) // 2
     left, right = 0, 0
-    max_left = 0
-    max_right = 0
+    max_left, max_right = 0, 0
 
-    for num in nums[:m:-1]:
+    for num in nums[m::-1]:
         left += num
         max_left = max(left, max_left)
 
-    for num in nums[m:]:
+    for num in nums[m+1:]:
         right += num
         max_right = max(right, max_right)
 
-    return max_left+max_right
+    return max_left + max_right
 
 
 # O(nlogn) - divide and conquer algorithm
