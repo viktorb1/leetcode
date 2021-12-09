@@ -10,17 +10,12 @@ class Solution:
         high = n
         
         while low <= high:
-            if isBadVersion(mid) == False:
-                low = mid + 1
-                mid = low + (high - low) // 2
-            elif isBadVersion(mid) == True and isBadVersion(mid-1) == False:
+            if isBadVersion(mid) and not isBadVersion(mid-1):
                 return mid
-            else:
+            elif isBadVersion(mid):
                 high = mid - 1
-                mid = low + (high - low) // 2
-                    
-        
+                mid = (low + high) // 2
+            else:
+                low = mid + 1
+                mid = (low + high) // 2
                 
-                
-                    
-            
