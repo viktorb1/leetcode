@@ -1,16 +1,9 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        saw = {};
+        saw = dict()
         
-        for i in range(len(nums)):
-            if nums[i] not in saw:
-                saw[nums[i]] = i
-            elif saw[nums[i]] != i:
-                return [saw[nums[i]], i]
+        for idx, num in enumerate(nums):
+            if target-num in saw:
+                return [saw[target-num], idx]
             
-            if target - nums[i] in saw and target - nums[i] != nums[i]:
-                return [i, saw[target - nums[i]] ]
-
-        
-        return [];
-            
+            saw[num] = idx
