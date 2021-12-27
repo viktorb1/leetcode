@@ -6,22 +6,16 @@ class Solution:
         while low <= high:
             mid = (low + high) // 2
             
-            if target == nums[mid]:
-                return mid
-            elif nums[mid] > nums[high]:
-                if target <= nums[mid] and target >= nums[low]:
+            if target < nums[low] and nums[mid] >= nums[low]:
+                low = mid + 1
+            elif target > nums[high] and nums[mid] <= nums[high]:
+                high = mid - 1
+            else:                
+                if target < nums[mid]:
                     high = mid - 1
-                else:
-                    low = mid + 1
-            elif nums[mid] < nums[high] and nums[mid] < nums[low]: # low case
-                if target >= nums[mid] and target <= nums[high]:
-                    low = mid + 1
-                else:
-                    high = mid - 1
-            elif nums[mid] <= nums[high] and nums[mid] >= nums[low]: # in order
-                if target > nums[mid]:
+                elif target > nums[mid]:
                     low = mid + 1
                 else:
-                    high = mid - 1
-
+                    return mid
+        
         return -1
