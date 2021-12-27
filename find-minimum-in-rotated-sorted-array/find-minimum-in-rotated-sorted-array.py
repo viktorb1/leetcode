@@ -3,7 +3,7 @@ class Solution:
         low = 0
         high = len(nums) - 1
 
-        while low < high:
+        while low <= high:
             mid = (low + high) // 2
             
             if nums[mid] < nums[low]:
@@ -11,6 +11,4 @@ class Solution:
             elif nums[mid] > nums[high]:
                 low = mid + 1
             else:
-                break
-        
-        return nums[low]
+                return nums[low]
