@@ -1,6 +1,6 @@
 class Solution:
     def countPrimes(self, n: int) -> int:
-        prime = [0, 0, 1] + [1] * (n-3)
+        prime = [0, 0] + [1] * (n-2)
         count = 0
         
         for i in range(2, n):
