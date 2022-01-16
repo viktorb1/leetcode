@@ -7,6 +7,8 @@ class Solution:
             if len(path) == k:
                 output.append(path)
                 return
+            elif len(path) > k:
+                return
             else:
                 for i in range(len(nums)):
                     backtrack(nums[i+1:], path + [nums[i]])
