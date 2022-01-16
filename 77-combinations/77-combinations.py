@@ -3,13 +3,13 @@ class Solution:
         nums = list(range(1, n+1))
         output = []
         
-        def backtrack(nums, path):
+        def backtrack(i, path):
             if len(path) == k:
                 output.append(path)
                 return
             else:
-                for i in range(len(nums)):
-                    backtrack(nums[i+1:], path + [nums[i]])
+                for j in range(i, len(nums)):
+                    backtrack(j+1, path + [nums[j]])
         
-        backtrack(nums, [])
+        backtrack(0, [])
         return output
