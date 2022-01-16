@@ -8,8 +8,8 @@ class Solution:
                 output.append(path)
                 return
             else:
-                for idx, num in enumerate(nums):
-                    backtrack(nums[idx+1:], path + [num])
+                for i in range(len(nums)):
+                    backtrack(nums[i+1:], path + [nums[i]])
         
         backtrack(nums, [])
         return output
