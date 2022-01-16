@@ -9,7 +9,7 @@ class Solution:
                 return
             else:
                 for idx, num in enumerate(nums):
-                    backtrack(nums[idx+1:], [num] + path)
+                    backtrack(nums[idx+1:], path + [num])
         
         backtrack(nums, [])
         return output
