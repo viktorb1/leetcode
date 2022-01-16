@@ -8,8 +8,7 @@ class Solution:
             for ele in output:
                 nex.append(ele + [num])
             
-            for x in nex:
-                output.append(x)
+            output += nex
         
         return output
             
