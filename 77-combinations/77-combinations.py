@@ -6,6 +6,7 @@ class Solution:
         def backtrack(nums, path):
             if len(path) == k:
                 output.append(path)
+                return
             else:
                 for idx, num in enumerate(nums):
                     backtrack(nums[idx+1:], [num] + path)
