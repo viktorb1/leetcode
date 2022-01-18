@@ -1,14 +1,26 @@
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
-
-        n = len(nums)
-        dp = [-1]*n
         
-        for i in range(0, n):
-            dp[i] = 1
+        def dfs(n, memo):
+            ans = 1
             
-            for j in range(0, i):
-                if nums[j] < nums[i]:
-                    dp[i] = max(dp[i], 1 + dp[j])
+            if memo[n] != -1:
+                return memo[n]
+            
+            for j in range(n-1, -1, -1):
+                if nums[j] < nums[n]:
+                    ans_rec = 1 + dfs(j, memo)
+                    ans = max(ans, ans_rec)
+            
+            memo[n] = ans
+            return ans
+                    
         
-        return max(dp)
+        n = len(nums)
+        ans = float('-inf')
+        memo = [-1] * n
+        
+        for i in range(n-1, -1, -1):
+            ans = max(ans, dfs(i, memo))
+            
+        return ans
