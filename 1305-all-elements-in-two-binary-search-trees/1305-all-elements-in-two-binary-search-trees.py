@@ -19,14 +19,8 @@ class Solution:
                 sol.append(root2[y])
                 y += 1
         
-        while x < len(root1):
-            sol.append(root1[x])
-            x += 1
-            
-        while y < len(root2):
-            sol.append(root2[y])
-            y += 1
-            
+        sol += root1[x:]
+        sol += root2[y:]
         return sol
         
         
