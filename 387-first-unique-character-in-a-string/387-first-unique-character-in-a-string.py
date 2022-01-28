@@ -1,11 +1,7 @@
 class Solution:
     def firstUniqChar(self, s: str) -> int:
         chars = Counter(s)
-        uniques = set()
-        
-        for c in chars:
-            if chars[c] == 1:
-                uniques.add(c)
+        uniques = set([c for c in chars if chars[c] == 1])
         
         for i, c in enumerate(s):
             if c in uniques:
