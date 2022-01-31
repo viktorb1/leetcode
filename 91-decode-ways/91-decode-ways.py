@@ -1,16 +1,13 @@
 class Solution:
-    @lru_cache(cache)
     def numDecodings(self, s: str) -> int:
-        if not s:
-            return 1
-
-        total = 0
-
-        if s[-1] != '0':
-            total += self.numDecodings(s[:-1])
+        dp = [0] * (len(s) + 1)
+        dp[0] = 1
         
-        if len(s) > 1 and s[-2] != '0' and int(s[-2:]) > 0 and int(s[-2:]) <= 26:
-            total += self.numDecodings(s[:-2])
-                
-        return total
-        
+        for i in range(1, len(s)+1):
+            if s[i-1] != '0':
+                dp[i] += dp[i-1]
+
+            if i > 1 and s[i-2] != '0' and int(s[i-2:i]) > 0 and int(s[i-2:i]) <= 26:
+                dp[i] += dp[i-2]
+
+        return dp[len(s)]    
