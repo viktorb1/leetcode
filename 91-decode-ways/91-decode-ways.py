@@ -1,23 +1,16 @@
 class Solution:
+    @lru_cache(cache)
     def numDecodings(self, s: str) -> int:
-        dic = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26'}
-        memo = {}
+        if not s:
+            return 1
+
+        total = 0
+
+        if s[-1] != '0':
+            total += self.numDecodings(s[:-1])
         
-        def helper(s):
-            if not s:
-                return 1
-            elif s in memo:
-                return memo[s]
-            
-            total = 0
-            
-            if s[0] in dic:
-                total += helper(s[1:])
-            
-            if len(s) > 1 and s[0:2] in dic:
-                total += helper(s[2:])
+        if len(s) > 1 and s[-2] != '0' and int(s[-2:]) > 0 and int(s[-2:]) <= 26:
+            total += self.numDecodings(s[:-2])
                 
-            memo[s] = total
-            return total
+        return total
         
-        return helper(s)
