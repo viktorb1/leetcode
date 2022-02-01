@@ -5,12 +5,12 @@ class Solution:
         elif n == 1 or n == 2:
             return 1
         
-        dp = [0] * (n + 1)
-        dp[0] = 0
-        dp[1] = 1
-        dp[2] = 1
+        first = 0
+        second = 1
+        third = 1
         
-        for i in range(3, n+1):
-            dp[i] = dp[i-1] + dp[i-2] + dp[i-3]
+        for _ in range(3, n+1):
+            forth = third + second + first
+            first, second, third = second, third, forth
             
-        return dp[n]
+        return third
