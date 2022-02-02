@@ -12,7 +12,6 @@ class Solution:
                 left_ones += 1
             
             res = min(res, left_ones + right_zeros)
-
         
         return res
             
