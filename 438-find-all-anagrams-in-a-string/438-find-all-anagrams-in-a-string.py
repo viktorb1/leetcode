@@ -11,5 +11,5 @@ class Solution:
                 sol.append(i)
                 
             counts[s[i]] -= 1
-                            
+        
         return sol
