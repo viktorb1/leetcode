@@ -7,12 +7,13 @@ class Solution:
             one = nums[i]
             for j in range(i+1, len(nums)):
                 two = nums[j]
-                three = j + 1
-                four = len(nums) - 1
                 
+                three = j + 1
+                four = len(nums)-1
+
                 while three < four:
                     summ = one + two + nums[three] + nums[four]
-                    
+
                     if summ < target:
                         three += 1
                     elif summ > target:
@@ -20,6 +21,5 @@ class Solution:
                     else:
                         ans.add((one, two, nums[three], nums[four]))
                         three += 1
-                        four -= 1
-                        
+                    
         return ans
