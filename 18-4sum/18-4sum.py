@@ -20,6 +20,15 @@ class Solution:
                         four -= 1
                     else:
                         ans.add((one, two, nums[three], nums[four]))
-                        three += 1
+                        x = nums[three]
+                        while three < four and x == nums[three]:
+                            three += 1
+                            
+                        y = nums[four]
+                        while three < four and y == nums[four]:
+                            four -= 1
+    
+                        
+                        
                     
         return ans
