@@ -1,6 +1,7 @@
 class Solution:
     def splitString(self, s: str) -> bool:
         
+        @lru_cache
         def helper(prev, s):
             if not s:
                 return True
