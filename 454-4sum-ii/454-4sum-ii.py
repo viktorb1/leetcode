@@ -3,9 +3,9 @@ class Solution:
         last = defaultdict(int)
         count = 0
         
-        for n3 in nums3:
-            for n4 in nums4:
-                last[n3+n4] += 1
+        for three in nums3:
+            for four in nums4:
+                last[three+four] += 1
             
         for one in nums1:
             for two in nums2:
