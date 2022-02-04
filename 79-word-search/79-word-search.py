@@ -1,24 +1,22 @@
 class Solution:
-    def exist(self, board: List[List[str]], word: str) -> bool:
-        def search_letter(i, j, n):
-            if n == len(word):
-                return True
-            if not isInBounds(i, j) or board[i][j] != word[n]:
-                return False
+    def exist(self, g: List[List[str]], word: str) -> bool:
+        R, C = len(g), len(g[0])
 
-            board[i][j] = "#"
-            
-            for x, y in ((i, j+1), (i+1, j), (i-1, j), (i, j-1)):
-                if search_letter(x, y, n+1):
+        def spread(i, j, w):
+            if not w:
+                return True
+            original, g[i][j] = g[i][j], '-'
+            spreaded = False
+            for x, y in ((i-1, j), (i+1, j), (i, j-1), (i, j+1)):
+                if (0<=x<R and 0<=y<C and w[0]==g[x][y]
+                        and spread(x, y, w[1:])):
+                    spreaded = True
+                    break
+            g[i][j] = original
+            return spreaded
+
+        for i in range(R):
+            for j in range(C):
+                if g[i][j] == word[0] and spread(i, j, word[1:]):
                     return True
-            
-            board[i][j] = word[n]
-            return False
-            
-        def isInBounds(i, j):
-            return 0 <= i < len(board) and 0 <= j < len(board[0])
-        
-        for i in range(len(board)):
-            for j in range(len(board[0])):
-                if search_letter(i, j, 0):
-                    return True
+        return False
