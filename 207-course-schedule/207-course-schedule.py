@@ -5,16 +5,19 @@ class Solution:
 
         for c, p in prerequisites:
             d[c].add(p)
-            
+        
         @cache
         def checkpath(c):
             seen.add(c)
             
-            if c in d:
-                for p in d[c]:
-                    if p in seen or not checkpath(p):
-                        return False
+            if c not in d:
+                seen.remove(c)
+                return True
             
+            for p in d[c]:
+                if p in seen or not checkpath(p):
+                    return False
+
             seen.remove(c)
             return True
         
