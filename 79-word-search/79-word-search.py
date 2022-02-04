@@ -6,17 +6,17 @@ class Solution:
             if not isInBounds(i, j) or board[i][j] != w[0]:
                 return False
 
-            z = False
             board[i][j] = "#"
             
-            for x, y in ((i-1, j), (i, j-1), (i, j+1), (i+1, j)):
-                z |= search_letter(w[1:], x, y)
+            for x, y in ((i, j+1), (i+1, j), (i-1, j), (i, j-1)):
+                if search_letter(w[1:], x, y):
+                    return True
             
             board[i][j] = w[0]
-            return z
+            return False
             
         def isInBounds(i, j):
-            return i >= 0 and i < len(board) and j >= 0 and j < len(board[0])
+            return 0 <= i < len(board) and 0 <= j < len(board[0])
         
         for i in range(len(board)):
             for j in range(len(board[0])):
