@@ -7,12 +7,11 @@ class Solution:
             d[c].add(p)
         
         @cache
-        def dfs(e):
-            seen.add(e)
-            
+        def dfs(e):            
             if e not in d:
-                seen.remove(e)
                 return True
+                
+            seen.add(e)
             
             for p in d[e]:
                 if p in seen or not dfs(p):
