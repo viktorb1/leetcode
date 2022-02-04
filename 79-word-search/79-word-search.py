@@ -20,6 +20,5 @@ class Solution:
         
         for i in range(len(board)):
             for j in range(len(board[0])):
-                if board[i][j] == word[0]:
-                    if search_letter(word, i, j):
-                        return True
+                if search_letter(word, i, j):
+                    return True
