@@ -8,7 +8,6 @@ class Solution:
             tmp = heights[i][j]
             heights[i][j] = float('inf')
             
-            
             for x, y in ((i+1, j), (i, j+1), (i-1, j), (i, j-1)):
                 if isInRange(x, y) and tmp >= heights[x][y] and reachOcean(x, y, coord):
                     heights[i][j] = tmp
