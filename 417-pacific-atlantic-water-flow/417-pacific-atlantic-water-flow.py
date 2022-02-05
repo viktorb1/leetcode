@@ -1,7 +1,6 @@
 class Solution:
     def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
         sol = []
-        
         def reachPacific(i, j):
             if i == 0 or j == 0:
                 return True
