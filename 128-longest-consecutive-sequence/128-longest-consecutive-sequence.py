@@ -6,12 +6,11 @@ class Solution:
         for n in nums:
             if n-1 not in options:
                 count = 1
-                while n+1 in options:
+                x = n
+                while x+1 in options:
                     count += 1
-                    n += 1
+                    x += 1
                     
                 max_count = max(max_count, count)
             
         return max_count
-            
-                
