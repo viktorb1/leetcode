@@ -2,7 +2,6 @@ class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
         options = set(nums)
         
-        @lru_cache
         def dfs(n):
             if n not in options:
                 return 0
