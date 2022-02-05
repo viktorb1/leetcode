@@ -6,8 +6,6 @@ class Solution:
         def reachOcean(i, j, coord):
             if i == coord[0] or j == coord[1]:
                 return True
-            if (i, j, coord) in memo:
-                return memo[(i, j, coord)]
 
             tmp = heights[i][j]
             heights[i][j] = float('inf')
@@ -25,8 +23,16 @@ class Solution:
         
         for i in range(len(heights)):
             for j in range(len(heights[0])):
-                x = memo[i, j, (0, 0)] = reachOcean(i, j, (0, 0))
-                y = memo[i, j, (len(heights)-1, len(heights[0])-1)] = reachOcean(i, j, (len(heights)-1, len(heights[0])-1))
+                x, y = False, False
+                if (i, j, (0, 0)) in memo:
+                    x = memo[i, j, (0, 0)]
+                else:
+                    x = reachOcean(i, j, (0, 0))
+                
+                if (i, j, (len(heights)-1), len(heights[0])-1) in memo:
+                    y = memo[(len(heights)-1, len(heights[0])-1)]
+                else:
+                    y = reachOcean(i, j, (len(heights)-1, len(heights[0])-1))
                 
                 if x and y:
                     sol.append((i, j))
