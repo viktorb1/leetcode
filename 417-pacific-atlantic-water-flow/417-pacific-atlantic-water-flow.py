@@ -1,9 +1,7 @@
 class Solution:
     def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
-        rows = len(heights)
-        cols = len(heights[0])
-        pacific = set()
-        atlantic = set()
+        rows, cols = len(heights), len(heights[0])
+        pacific, atlantic = set(), set()
         
         def dfs(i, j, visited, prev):
             if i < 0 or i >= rows or j < 0 or j >= cols or heights[i][j] < prev or (i, j) in visited:
