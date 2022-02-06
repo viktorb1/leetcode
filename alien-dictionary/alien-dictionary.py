@@ -1,9 +1,6 @@
 class Solution:
     def alienOrder(self, words):
         adj = self.generateGraph(words)
-        if adj == '':
-            return ''
-
         l = self.splitDisconnected(adj)
         return self.mergeKStrings(l)
 
@@ -13,12 +10,11 @@ class Solution:
         for cur, nex in zip(words, words[1:]):
             if len(cur) > len(nex) and cur[:len(nex)] == nex:
                 return ''
-            i = 0
-            while i < min(len(cur), len(nex)) and cur[i] == nex[i]:
-                i += 1
-
-            if i < min(len(cur), len(nex)) and cur[i] != nex[i]: 
-                adj[cur[i]].add(nex[i])
+            
+            for i in range(min(len(cur), len(nex))):
+                if cur[i] != nex[i]:
+                    adj[cur[i]].add(nex[i])
+                    break
 
         return adj
 
@@ -70,7 +66,3 @@ class Solution:
                 sol.append(smallest)
 
         return ''.join(sol)
-
-
-lol = Solution()
-print(lol.alienOrder(["ab", "abc"]))
