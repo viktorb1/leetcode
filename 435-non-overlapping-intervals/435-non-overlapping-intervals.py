@@ -7,7 +7,8 @@ class Solution:
         for interval in intervals[1:]:
             if interval[0] >= cur[1]:
                 cur = interval
+            else:
                 count += 1
             
             
-        return len(intervals) - count - 1
+        return count
