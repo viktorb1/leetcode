@@ -20,10 +20,10 @@ class RandomizedSet:
         else:
             idx_to_del = self.items[val]
             val_to_rpc = self.mirror.pop()
+            del self.items[val]
             if idx_to_del < len(self.mirror):
                 self.mirror[idx_to_del] = val_to_rpc
                 self.items[val_to_rpc] = idx_to_del
-            del self.items[val]
             return True
 
     def getRandom(self) -> int:
