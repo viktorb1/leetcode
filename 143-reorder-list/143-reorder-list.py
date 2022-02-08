@@ -8,17 +8,29 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        l = []
-        cur = head
+        slow = fast = head
+        while fast.next and fast.next.next:
+            fast = fast.next.next
+            slow = slow.next
         
+        cur = slow.next
+        prev = None
+        slow.next = None
         while cur:
-            l.append(cur)
-            cur = cur.next
+            save = cur.next
+            cur.next = prev
+            prev = cur
+            cur = save
         
-        n = len(l)
-        for i in range(n//2):
-            l[i].next = l[n-i-1]
-            l[n-i-1].next = l[i+1]
+        head1 = head
+        head2 = prev
+        while head1 and head2:
+            save1 = head1.next
+            save2 = head2.next
+            head1.next = head2
+            head1 = save1
+            head2.next = head1
+            head2 = save2
+        
+        
             
-        l[n//2].next = None
-        return head
