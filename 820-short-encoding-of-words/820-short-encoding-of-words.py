@@ -19,8 +19,6 @@ class Solution:
         return self.dfs(tree.tree)
         
 
-        
-
 class TrieNode:
     def __init__(self):
         self.children = {}
@@ -42,5 +40,4 @@ class Trie:
             node = node.children[c]
         
         node.isEnd = True
-        print(len(word))
         node.length = len(word)
