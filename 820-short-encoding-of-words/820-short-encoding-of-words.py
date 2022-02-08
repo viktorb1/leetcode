@@ -4,7 +4,7 @@ class Solution:
             return tree.length+1
         
         total = 0
-        for _, node in tree.children.items():
+        for node in tree.children.values():
             total += self.dfs(node)
         
         return total
