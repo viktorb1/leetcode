@@ -1,13 +1,46 @@
 class Solution:
+    def dfs(self, tree):
+        if tree.children == {}:
+            return tree.length+1
+        
+        total = 0
+        for _, node in tree.children.items():
+            total += self.dfs(node)
+        
+        return total
+        
+    
     def minimumLengthEncoding(self, words: List[str]) -> int:
-        words_set = set(words)
+        tree = Trie()
         
-        for w in words:
-            for i in range(1, len(w)):
-                words_set.discard(w[i:])
-               
-        count = 0
-        for w in words_set:
-            count += len(w) + 1
+        for word in words:
+            tree.insert(word[::-1])
         
-        return count
+        return self.dfs(tree.tree)
+        
+
+        
+
+class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.isEnd = False
+        self.length = 0
+    
+
+class Trie:
+    def __init__(self):
+        self.tree = TrieNode()
+        
+    def insert(self, word):
+        node = self.tree
+        
+        for c in word:
+            if c not in node.children:
+                node.children[c] = TrieNode()
+            
+            node = node.children[c]
+        
+        node.isEnd = True
+        print(len(word))
+        node.length = len(word)
