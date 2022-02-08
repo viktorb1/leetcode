@@ -3,16 +3,31 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+from queue import PriorityQueue
+
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        ans = []
-        for l in lists:
-            while l:
-                ans.append(l)
-                l = l.next
-                
-        ans.sort(key=lambda x: x.val)
-        for i, node in enumerate(ans[:-1]):
-            node.next = ans[i+1]
         
-        return ans[0] if len(ans) > 0 else None
+        class Wrapper():
+            def __init__(self, node):
+                self.node = node
+            def __lt__(self, other):
+                return self.node.val < other.node.val
+            
+        start = ListNode(0)
+        cur = start
+        q = PriorityQueue()
+        
+        for l in lists:
+            if l:
+                q.put(Wrapper(l))
+            
+        while not q.empty():
+            node = q.get().node
+            cur.next = node
+            cur = cur.next
+            
+            if node.next:
+                q.put(Wrapper(node.next))
+
+        return start.next
