@@ -5,18 +5,17 @@
 #         self.next = next
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
-        def dfs(node, count):
-            if not node:
-                return count[0]
-            
-            dfs(node.next, count)
-            
-            if count[0] == n:
-                node.next = node.next.next
-            
-            count[0] += 1
-            return count[0]
+        slow = fast = head
         
-        x = dfs(head, [0])
+        for _ in range(n):
+            fast = fast.next
         
-        return head if n < x else head.next
+        if not fast:
+            return head.next
+    
+        while fast.next:
+            fast = fast.next
+            slow = slow.next
+        slow.next = slow.next.next
+        
+        return head
