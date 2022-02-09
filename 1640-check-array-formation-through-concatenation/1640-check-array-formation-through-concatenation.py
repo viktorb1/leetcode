@@ -8,15 +8,7 @@ class Solution:
                 if p == arr[:len(p)]:
                     if try_piece(arr[len(p):]):
                         return True
-                
             
             return False
                 
-            
-        for p in pieces:
-            if p == arr[:len(p)]:
-                if try_piece(arr[len(p):]):
-                    return True
-            
-            
-        return False
+        return try_piece(arr)
