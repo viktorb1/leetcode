@@ -19,9 +19,9 @@ class Solution:
             for i in range(col_end, col_start - 1, -1):
                 sol.append(matrix[row_end][i])
             row_end -= 1
-            
+        
             for i in range(row_end, row_start - 1, -1):
                 sol.append(matrix[i][col_start])
             col_start += 1
-
+            
         return sol
