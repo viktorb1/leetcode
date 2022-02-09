@@ -1,14 +1,14 @@
 class Solution:
     def canFormArray(self, arr: List[int], pieces: List[List[int]]) -> bool:
-        def try_piece(arr):
-            if not arr:
-                return True
+        dic = {}
+        
+        for p in pieces:
+            dic[p[0]] = p
+        
+        res = []
+        
+        for num in arr:
+            if num in dic:
+                res += dic[num]
             
-            for p in pieces:
-                if p == arr[:len(p)]:
-                    if try_piece(arr[len(p):]):
-                        return True
-            
-            return False
-                
-        return try_piece(arr)
+        return res == arr
