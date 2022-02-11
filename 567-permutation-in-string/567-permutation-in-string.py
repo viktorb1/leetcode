@@ -16,9 +16,5 @@ class Solution:
             
             y[s2[end+1]] += 1
             y[s2[start]] -= 1
-            
-            if y[s2[start]] == 0:
-                del y[s2[start]]
-            
             end += 1
             start += 1
