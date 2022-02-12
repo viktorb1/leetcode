@@ -2,7 +2,7 @@ class Solution:
     def trailingZeroes(self, n: int) -> int:
         numfives = 0
         
-        for i in range(5, n+1):
+        for i in range(5, n+1, 5):
             while i % 5 == 0:
                 numfives += 1
                 i = i // 5
