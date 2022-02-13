@@ -7,10 +7,8 @@ class Solution:
                 ans.add(tuple(sorted(sol)))
                 return
 
-            for j in range(i, len(nums)):
-                dfs(j+1, sol + [nums[j]])
-                
-            ans.add(tuple(sorted(sol)))
+            dfs(i+1, sol + [nums[i]])
+            dfs(i+1, sol) 
     
         dfs(0, [])
         return ans
