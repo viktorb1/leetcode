@@ -1,12 +1,16 @@
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
-        open_par = {'(':')', '[':']', '{':'}'}
+        brackets = {'(':')', '[':']', '{':'}'}
         
-        for i in s:
-            if i in open_par.keys():
-                stack.append(i)
-            elif not stack or i != open_par[stack.pop()]:
-                return False
+        for c in s:
+            if c in brackets.keys():
+                stack.append(c)
+            elif c in brackets.values():
+                if not stack:
+                    return False
+                elif brackets[stack.pop()] != c:
+                    return False
         
-        return False if stack else True
+        return len(stack) == 0
+                    
