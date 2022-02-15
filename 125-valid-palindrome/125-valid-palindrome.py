@@ -8,7 +8,7 @@ class Solution:
             while r > 0 and not s[r].isalnum(): r -= 1
                 
             if l > r:
-                break
+                return True
             
             if s[l].lower() != s[r].lower():
                 return False
