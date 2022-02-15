@@ -7,8 +7,7 @@ class Solution:
                 l -= 1
                 r += 1
 
-            if r-l-1 > len(self.m):
-                self.m = s[l+1:r]
+            self.m = max(self.m, s[l+1:r], key=lambda x: len(x))
                             
         for i,c in enumerate(s):
             expand(i, i)
