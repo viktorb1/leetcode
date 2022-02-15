@@ -9,8 +9,7 @@ class Solution:
                 
             if l > r:
                 return True
-            
-            if s[l].lower() != s[r].lower():
+            elif s[l].lower() != s[r].lower():
                 return False
             
             l += 1
