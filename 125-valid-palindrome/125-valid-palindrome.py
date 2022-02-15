@@ -4,8 +4,8 @@ class Solution:
         r = len(s) - 1
         
         while l < r:
-            while l < len(s) and not (s[l].isalpha() or s[l].isnumeric()): l += 1
-            while r > 0 and not (s[r].isalpha() or s[r].isnumeric()): r -= 1
+            while l < len(s) and not s[l].isalnum(): l += 1
+            while r > 0 and not s[r].isalnum(): r -= 1
                 
             if l > r:
                 break
