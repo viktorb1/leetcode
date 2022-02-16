@@ -5,14 +5,20 @@ class MagicDictionary:
 
     def buildDict(self, dictionary: List[str]) -> None:
         for w in dictionary:
-            for i in range(len(w)):
-                self.word[w].add(w[:i] + "*" + w[i+1:])
+            self.word[len(w)].add(w)
 
     def search(self, searchWord: str) -> bool:
-        for i in range(len(searchWord)):
-            for w in self.word.keys():
-                if searchWord[:i] + "*" + searchWord[i+1:] in self.word[w] and searchWord != w:
-                    return True
+        
+        for w in self.word[len(searchWord)]:
+            count = 0
+            for a, b in zip(searchWord, w):
+                if a != b:
+                    count += 1
+            
+            if count == 1:
+                return True
+            else:
+                count = 0
         
         return False
 
