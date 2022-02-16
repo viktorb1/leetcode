@@ -14,6 +14,8 @@ class MagicDictionary:
             for a, b in zip(searchWord, w):
                 if a != b:
                     count += 1
+                if count > 1:
+                    break
             
             if count == 1:
                 return True
