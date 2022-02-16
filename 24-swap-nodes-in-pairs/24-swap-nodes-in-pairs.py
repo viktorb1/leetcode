@@ -1,7 +1,10 @@
 class Solution:
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head or not head.next:
+            return head
+        
         one = head
-        two = head.next if head else None
+        two = head.next
         save_for_return = two
         
         while one and two:
@@ -14,4 +17,4 @@ class Solution:
             one = save1 # update 1 to 3
             two = save2 # update 2 to 4
             
-        return save_for_return if save_for_return else head
+        return save_for_return
