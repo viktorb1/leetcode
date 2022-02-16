@@ -9,18 +9,9 @@ class MagicDictionary:
 
     def search(self, searchWord: str) -> bool:
         
-        for w in self.word[len(searchWord)]:
-            count = 0
-            for a, b in zip(searchWord, w):
-                if a != b:
-                    count += 1
-                if count > 1:
-                    break
-            
-            if count == 1:
+        for w in self.word[len(searchWord)]:            
+            if sum(a != b for a, b in zip(w, searchWord)) == 1:
                 return True
-            else:
-                count = 0
         
         return False
 
