@@ -9,7 +9,7 @@ class Solution:
         
         while one and two:
             three = two.next # save 3
-            four = two.next.next if two.next else None # save 4
+            four = three.next if three else None # save 4
             
             one.next = four if three and four else three # make 1 point to 4
             two.next = one # make 2 point to 1
