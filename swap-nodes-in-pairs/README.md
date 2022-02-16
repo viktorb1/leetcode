@@ -1,3 +1,4 @@
+[Discussion Post (created on 15/1/2022 at 18:12)](https://leetcode.com/problems/swap-nodes-in-pairs/discuss/1774386/Easy-To-Follow-Python-NO-DUMMYNODE)  
 <h2>24. Swap Nodes in Pairs</h2><h3>Medium</h3><hr><div><p>Given a&nbsp;linked list, swap every two adjacent nodes and return its head. You must solve the problem without&nbsp;modifying the values in the list's nodes (i.e., only nodes themselves may be changed.)</p>
 
 <p>&nbsp;</p>
