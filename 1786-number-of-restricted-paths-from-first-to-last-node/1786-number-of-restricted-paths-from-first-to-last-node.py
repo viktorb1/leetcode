@@ -11,17 +11,15 @@ class Solution:
         def dijkstras(start): # calculate shortests paths
             d = {v: float('inf') for v in range(1, n+1)}
             d[start] = 0
-            # pi = {v: None for v in range(1, n+1)}
             q = PriorityQueue()
             q.put((0, start))
             
             while not q.empty():
-                weight, u = q.get()
+                u = q.get()[1]
                 
                 for v in g[u]:
                     if d[u] + g[u][v] < d[v]:
                         d[v] = d[u] + g[u][v]
-                        # pi[v] = u
                         q.put((d[v], v))
             
             return d
@@ -33,16 +31,13 @@ class Solution:
         def dfs(node):
             if node == n:
                 return 1
-            elif node in seen:
-                return 0
             
             seen.add(node)
             count = 0
             for neighbor in g[node].keys():
-                if d[neighbor] < d[node]:
+                if d[neighbor] < d[node] and neighbor not in seen:
                     count += dfs(neighbor)
             seen.discard(node)
             return count
        
         return dfs(1) % (10**9 + 7)
-        
