@@ -10,11 +10,10 @@ class Solution:
         if self.checkEquality(root, subRoot):
             return True
         
-        if not root:
+        if root:
+            return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
+        else:
             return False
-
-        return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right, subRoot)
-
         
         
     def checkEquality(self, root, subRoot):
