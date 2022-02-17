@@ -23,7 +23,8 @@ class Codec:
         
         vals = []
         dfs(root)
-        return " ".join(vals)
+        return ' '.join(vals)
+            
         
 
     def deserialize(self, data):
@@ -45,6 +46,7 @@ class Codec:
         
         vals = iter(data.split())
         return dfs()
+        
 
 # Your Codec object will be instantiated and called as such:
 # ser = Codec()
