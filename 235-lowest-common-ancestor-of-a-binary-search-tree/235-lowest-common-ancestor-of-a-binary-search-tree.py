@@ -13,10 +13,9 @@ class Solution:
 
             if left and right:
                 return root
-            elif left and (root == p or root == q):
-                return root
-            elif right and (root == p or root == q):
-                return root
+            elif (root == p or root == q):
+                if left or right:
+                    return root
             elif left:
                 root = root.left
             elif right:
