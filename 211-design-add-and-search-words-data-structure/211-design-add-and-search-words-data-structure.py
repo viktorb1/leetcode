@@ -1,39 +1,41 @@
-class WordDictionary:
-    class PrefixTree():
-        def __init__(self):
-            self.next = dict()
-            self.isWord = False
-    
+class TrieNode():
     def __init__(self):
-        self.tree = self.PrefixTree()
+        self.children = {}
+        self.isWord = False
+
+class WordDictionary:
+
+    def __init__(self):
+        self.trie = TrieNode()
 
     def addWord(self, word: str) -> None:
-        cur = self.tree
-    
+        cur = self.trie
+        
         for c in word:
-            if c not in cur.next:
-                cur.next[c] = self.PrefixTree()
-
-            cur = cur.next[c]
-            
+            if c in cur.children:
+                cur = cur.children[c]
+            else:
+                cur.children[c] = TrieNode()
+                cur = cur.children[c]
         cur.isWord = True
-                
-    def search(self, word: str, d = None) -> bool:
-        cur = self.tree if d == None else d
+
+    def search(self, word: str, cur=None) -> bool:
+        if not cur:
+            cur = self.trie
         
         for i, c in enumerate(word):
             if c == '.':
-                for key, tre in cur.next.items():
-                    if self.search(word[i+1:], tre):
+                for opt in cur.children:
+                    if self.search(word[i+1:], cur.children[opt]):
                         return True
                 
                 return False
-            elif c not in cur.next:
+            elif c not in cur.children:
                 return False
             else:
-                cur = cur.next[c]
+                cur = cur.children[c]
         
-        return True if cur.isWord else False
+        return cur.isWord
 
 
 # Your WordDictionary object will be instantiated and called as such:
