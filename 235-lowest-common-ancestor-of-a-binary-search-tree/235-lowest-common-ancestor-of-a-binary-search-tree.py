@@ -6,29 +6,12 @@
 #         self.right = None
 
 class Solution:
-    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        while 1:
-            left = self.findVal(root.left, p, q)
-            right = self.findVal(root.right, p, q)
-
-            if left and right:
-                return root
-            elif (root == p or root == q):
-                if left or right:
-                    return root
-            elif left:
+    def lowestCommonAncestor(self, root, p, q):
+        while root:
+            if max(p.val, q.val) < root.val:
                 root = root.left
-            elif right:
+            elif min(p.val, q.val) > root.val:
                 root = root.right
             else:
-                return None
-                
-    
-    def findVal(self, node, p, q):
-        if not node:
-            return False
-        elif node == p or node == q:
-            return True
-        else:
-            return self.findVal(node.left, p, q) or self.findVal(node.right, p, q)
-            
+                return root
+        return None
