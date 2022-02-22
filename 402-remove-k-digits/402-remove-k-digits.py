@@ -4,15 +4,10 @@ class Solution:
         
         while k > 0:
             for i in range(len(num)-1):
-                ran = False
-                while num[i] > num[i+1] and k > 0 and i >= 0:
+                if num[i] > num[i+1] and k > 0:
                     num.pop(i)
                     k-= 1
-                    i -= 1
-                    ran = True
-                if ran:
                     break
-                
             else:
                 num.pop(-1)
                 k -= 1
