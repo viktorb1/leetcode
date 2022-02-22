@@ -5,7 +5,7 @@ class TrieNode():
 
 class Solution:
     def __init__(self):
-        self.root = TrieNode();
+        self.root = TrieNode()
         
     def insert(self, word):
         cur = self.root
@@ -19,8 +19,6 @@ class Solution:
     
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
         output = set()
-        seen = set()
-        
         cur = self.root
         
         for word in words:
@@ -30,18 +28,21 @@ class Solution:
             if cur.isWord:
                 output.add(word)
             
-            seen.add((i,j))
+            save = board[i][j]
+            board[i][j] = '#'
             
             for x, y in ((i+1,j), (i,j+1), (i-1, j), (i, j-1)):
-                if (x,y) not in seen and 0 <= x < len(board) and 0 <= y < len(board[0]) and board[x][y] in cur.children:
+                if 0 <= x < len(board) and 0 <= y < len(board[0]) and board[x][y] in cur.children:
                     dfs(x, y, cur.children[board[x][y]], word + board[x][y])
                     
-            seen.discard((i,j))
-            
+            board[i][j] = save
         
         for i in range(len(board)):
             for j in range(len(board[0])):
                 if board[i][j] in cur.children:
                     dfs(i, j, cur.children[board[i][j]], board[i][j])
+                
+                if len(output) == len(words):
+                    return output
         
         return output
