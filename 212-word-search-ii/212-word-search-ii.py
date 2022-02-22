@@ -41,8 +41,6 @@ class Solution:
             for j in range(len(board[0])):
                 if board[i][j] in cur.children:
                     dfs(i, j, cur.children[board[i][j]], board[i][j])
-                
-                if len(output) == len(words):
-                    return output
+        
         
         return output
