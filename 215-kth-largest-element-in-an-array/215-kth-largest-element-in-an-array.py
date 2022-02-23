@@ -7,7 +7,7 @@ class Solution:
             
             divider = start
             for i in range(start, end):
-                if nums[i] > nums[end]:
+                if nums[i] < nums[end]:
                     nums[divider], nums[i] = nums[i], nums[divider]
                     divider += 1
             
@@ -21,9 +21,9 @@ class Solution:
             x = random.randint(start, end)
             divider = partition(start, end, x)
 
-            if divider == k - 1:
+            if divider == len(nums) - k:
                 return nums[divider]
-            elif divider < k - 1:
+            elif divider < len(nums) - k:
                 return selectKth(divider+1, end)
             else:
                 return selectKth(start, divider-1)
