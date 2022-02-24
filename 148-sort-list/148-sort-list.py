@@ -6,8 +6,11 @@
 class Solution:
     def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         nodes = []
-        cur = head
         
+        if not head:
+            return None
+        
+        cur = head
         while cur:
             nodes.append(cur)
             cur = cur.next
@@ -17,8 +20,5 @@ class Solution:
         for i in range(len(nodes)-1):
             nodes[i].next = nodes[i+1]
             
-        if nodes:
-            nodes[-1].next = None
-            return nodes[0]
-        else:
-            return None
+        nodes[-1].next = None
+        return nodes[0]
