@@ -34,10 +34,7 @@ class Solution:
             
             seen = set()
         
-        
-        return True
-            
-                
+        return True 
                 
     def checkThreeByThree(self, grid):
         nums = set(list('0123456789'))
