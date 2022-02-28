@@ -15,9 +15,8 @@ class Solution:
             if i == targetFriend:
                 return chair.index(0)
             elif which == 1:
-                idx = chair.index(0)
-                chair[idx] = 1
-                picked_chairs[i] = idx
+                picked_chairs[i] = chair.index(0)
+                chair[picked_chairs[i]] = 1
             else:
                 chair[picked_chairs[i]] = 0
         
