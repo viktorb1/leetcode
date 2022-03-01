@@ -1,19 +1,22 @@
 class Solution:
     def divide(self, dividend: int, divisor: int) -> int:
         is_negative = (dividend < 0) != (divisor < 0)
-        divisor, dividend = abs(divisor), abs(dividend)
+        dividend, divisor = abs(dividend), abs(divisor)
         quotient = 0
-
+        
         while divisor <= dividend:
-            the_sum = divisor
-            num_quotients_added = 1
-            while the_sum + the_sum <= dividend:
-                the_sum += the_sum
-                num_quotients_added += num_quotients_added
-            dividend -= the_sum
-            quotient += num_quotients_added
-
+            sum_of_divisors = divisor
+            num_divisors_added = 1
+            
+            while sum_of_divisors + sum_of_divisors <= dividend:
+                sum_of_divisors += sum_of_divisors
+                num_divisors_added += num_divisors_added
+            
+            dividend -= sum_of_divisors
+            quotient += num_divisors_added
+        
         if is_negative:
-            return -min(quotient, 2**31)
+            return -min(2**31, quotient)
         else:
-            return min(quotient, 2**31-1)
+            return min(2**31 - 1, quotient)
+            
