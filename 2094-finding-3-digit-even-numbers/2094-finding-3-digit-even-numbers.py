@@ -1,14 +1,15 @@
 class Solution:
     def findEvenNumbers(self, digits: List[int]) -> List[int]:
-        sol = set()
+        sol = []
+        opts = Counter(digits)
         
-        for i in range(len(digits)):
-            for j in range(len(digits)):
-                for k in range(len(digits)):
-                    if i == j or j == k or i == k:
-                        continue
-                    num = digits[i] * 100 + digits[j] * 10 + digits[k]
-                    if num % 2 == 0 and num >= 100:
-                        sol.add(num)
+        for num in range(100, 1000, 2):
+            counts = Counter([int(c) for c in str(num)])
+            
+            for c in counts:
+                if counts[c] > opts[c]:
+                    break
+            else:
+                sol.append(num)
         
-        return sorted(list(sol))
+        return sol
