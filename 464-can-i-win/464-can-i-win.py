@@ -1,7 +1,6 @@
 class Solution:
     def canIWin(self, maxChoosableInteger: int, desiredTotal: int) -> bool:
         choices = tuple(i for i in range(1, maxChoosableInteger+1))
-        solutions = []
         
         @cache
         def play_game(cur_sum, i, choices):
