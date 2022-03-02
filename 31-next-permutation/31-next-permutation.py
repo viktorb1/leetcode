@@ -12,8 +12,7 @@ class Solution:
                     swap += 1
 
                 nums[pivot], nums[swap] = nums[swap], nums[pivot] 
-                nums[i:] = nums[i:][::-1] # reverse remainder
+                nums[i:] = nums[i:][::-1]
                 return
         else:
-            nums[:] = nums[::-1]
-                
+            nums.reverse()
