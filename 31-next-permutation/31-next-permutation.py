@@ -11,8 +11,8 @@ class Solution:
                 while swap < len(nums)-1 and nums[swap+1] > nums[pivot]:
                     swap += 1
 
-                nums[pivot], nums[swap] = nums[swap], nums[pivot]
-                nums[i:] = nums[i:][::-1]
+                nums[pivot], nums[swap] = nums[swap], nums[pivot] 
+                nums[i:] = nums[i:][::-1] # reverse remainder
                 return
         else:
             nums[:] = nums[::-1]
