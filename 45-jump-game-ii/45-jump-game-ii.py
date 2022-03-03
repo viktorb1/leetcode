@@ -8,7 +8,7 @@ class Solution:
             new_r = 0
 
             for i in range(l, r+1):
-                    new_r = max(new_r, i+nums[i])
+                new_r = max(new_r, i+nums[i])
             
             l, r = r+1, new_r
             count += 1
