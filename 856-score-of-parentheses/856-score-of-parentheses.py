@@ -2,7 +2,6 @@ class Solution:
     def scoreOfParentheses(self, s: str) -> int:
         stack = []
         points = 1
-        maxp = 1
         total = 0
         
         for i, c in enumerate(s):
