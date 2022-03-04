@@ -4,13 +4,13 @@ class Solution:
         seen = {}
         
         @cache
-        def dfs(path):
-            if path[-1] == len(graph) - 1:
+        def dfs(node, path):
+            if node == len(graph) - 1:
                 sol.append(path)
                 return
                         
-            for i in graph[path[-1]]:
-                dfs(path + tuple([i]))
+            for i in graph[node]:
+                dfs(i, path + tuple([i]))
         
-        dfs(tuple([0]))
+        dfs(0, tuple([0]))
         return sol
