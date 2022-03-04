@@ -3,13 +3,14 @@ class Solution:
         sol = []
         seen = {}
         
+        @cache
         def dfs(path):
             if path[-1] == len(graph) - 1:
                 sol.append(path)
                 return
                         
             for i in graph[path[-1]]:
-                dfs(path + [i])
+                dfs(path + tuple([i]))
         
-        dfs([0])
+        dfs(tuple([0]))
         return sol
