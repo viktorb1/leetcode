@@ -3,7 +3,6 @@ class Solution:
         for i in range(len(board)):
             for j in range((len(board[0]))):
                 if board[i][j] == 'R':
-                    count = 0
                     k,l = i-1,j-1
                     m,n = i+1,j+1
                     
@@ -26,5 +25,5 @@ class Solution:
                         board[i][n]
                     )
                     
-                    count = sum(a == 'p' for a in potential_matches)
-                    return count
+                    
+                    return sum(a == 'p' for a in potential_matches)
