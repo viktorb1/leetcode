@@ -25,5 +25,4 @@ class Solution:
                         board[i][n]
                     )
                     
-                    
                     return sum(a == 'p' for a in potential_matches)
