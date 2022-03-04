@@ -1,7 +1,7 @@
 class Solution:
     @cache
     def numTrees(self, n: int) -> int:
-        if n == 1 or n == 0:
+        if n == 0:
             return 1
         
         count = 0
