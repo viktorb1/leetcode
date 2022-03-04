@@ -6,7 +6,6 @@ class Solution:
         def dfs(choose, nums, total):
             if total == n and len(nums) == k:
                 sol.append(nums)
-                print(sol)
                 return
 
             for i, num in enumerate(choose):
