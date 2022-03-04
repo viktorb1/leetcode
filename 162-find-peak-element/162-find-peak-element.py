@@ -1,8 +1,8 @@
 class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
         nums = [float('-inf')] + nums + [float('-inf')]
-        start = 0
-        end = len(nums) - 1
+        start = 1
+        end = len(nums) - 2
         
         while start <= end:
             mid = (start + end) // 2
