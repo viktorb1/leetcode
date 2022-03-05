@@ -2,7 +2,6 @@ class Solution:
     def deleteAndEarn(self, nums: List[int]) -> int:
         d = Counter(nums)
         keys = tuple(set(nums))
-        nums.sort()
         
         @cache
         def dfs(keys):
