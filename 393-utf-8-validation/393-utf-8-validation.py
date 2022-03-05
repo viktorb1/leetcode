@@ -1,29 +1,24 @@
-class Solution:
-    def validUtf8(self, data: List[int]) -> bool:
-        i = 0 
+class Solution(object):
+    def validUtf8(self, data):
+        count = 0
         
-        while i < len(data):
-            if bin(data[i])[2:].zfill(8)[:1] == '0':
-                i += 1
-            elif bin(data[i])[2:].zfill(8)[:3] == '110':
-                if len(data[i:]) < 2:
+        for byte in data:
+            if byte >= 128 and byte <= 191:
+                if not count:
                     return False
-                elif bin(data[i+1])[2:].zfill(8)[:2] != '10':
-                    return False
-                i += 2
-            elif bin(data[i])[2:].zfill(8)[:4] == '1110':
-                if len(data[i:]) < 3:
-                    return False
-                elif set([bin(data[i+1])[2:].zfill(8)[:2], bin(data[i+2])[2:].zfill(8)[:2]]) != {'10'}:
-                    return False
-                i += 3
-            elif bin(data[i])[2:].zfill(8)[:5] == '11110':
-                if len(data[i:]) < 4:
-                    return False
-                elif set([bin(data[i+1])[2:].zfill(8)[:2], bin(data[i+2])[2:].zfill(8)[:2], bin(data[i+3])[2:].zfill(8)[:2]]) != {'10'}:
-                    return False
-                i += 4
+                count -= 1
             else:
-                return False
-        
-        return True
+                if count:
+                    return False
+                if byte < 128:
+                    continue
+                elif byte < 224:
+                    count = 1
+                elif byte < 240:
+                    count = 2
+                elif byte < 248:
+                    count = 3
+                else:
+                    return False
+                    
+        return count == 0
