@@ -5,7 +5,7 @@ class Solution:
         sum1, sum2 = 0, 0
         
         for i, v in enumerate(vals):
-            if vals[i-1] == vals[i] - 1:
+            if vals[i-1] == v - 1:
                 sum1, sum2 = sum2, max(v*c[v] + sum1, sum2)
             else:
                 sum1, sum2 = sum2, sum2 + v*c[v]
