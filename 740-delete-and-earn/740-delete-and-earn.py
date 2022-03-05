@@ -7,9 +7,7 @@ class Solution:
         for i, v in enumerate(vals):
             total = v*c[v]
             if vals[i-1] == vals[i] - 1:
-                temp = sum2
-                sum2 = max(total + sum1, sum2)
-                sum1 = temp
+                sum1, sum2 = sum2, max(total + sum1, sum2)
             else:
                 sum1, sum2 = sum2, sum2 + total
         
