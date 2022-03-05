@@ -1,20 +1,16 @@
 class Solution:
     def deleteAndEarn(self, nums: List[int]) -> int:
-        nums.sort()
-        d = Counter(nums)
-        keys = tuple(set(nums))
-        
-        @cache
-        def dfs(keys):
-            if not keys:
-                return 0
-            elif len(keys) == 1:
-                return keys[0]*d[keys[0]]
-            
-            if keys[-2] != keys[-1] - 1:
-                return keys[-1]*d[keys[-1]] + dfs(keys[:-1])
+        vals = sorted(set(nums))
+        c = Counter(nums)
+        count = 0
+        sum1, sum2 = 0, 0
+        for i, v in enumerate(vals):
+            total = v*c[v]
+            if vals[i-1] == vals[i] - 1:
+                temp = sum2
+                sum2 = max(total + sum1, sum2)
+                sum1 = temp
             else:
-                return max(keys[-1]*d[keys[-1]] + dfs(keys[:-2]), dfs(keys[:-1]))
+                sum1, sum2 = sum2, sum2 + total
         
-        return dfs(keys)
-        
+        return sum2
