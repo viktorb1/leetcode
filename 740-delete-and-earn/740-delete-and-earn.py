@@ -1,5 +1,6 @@
 class Solution:
     def deleteAndEarn(self, nums: List[int]) -> int:
+        nums.sort()
         d = Counter(nums)
         keys = tuple(set(nums))
         
