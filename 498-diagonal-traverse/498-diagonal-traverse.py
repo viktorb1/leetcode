@@ -15,10 +15,10 @@ class Solution:
             
             if not going_up:
                 output += row[::-1]
-                going_up = True
             else:
                 output += row
-                going_up = False
+            
+            going_up = not going_up
             
         for j in range(1, len(mat[0])):
             i = len(mat) - 1
@@ -31,9 +31,9 @@ class Solution:
             
             if not going_up:
                 output += row[::-1]
-                going_up = True
             else:
                 output += row
-                going_up = False
+            
+            going_up = not going_up
 
         return output
