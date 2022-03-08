@@ -21,17 +21,11 @@ class Solution:
         inorder(root)
         a, b = 0, len(nodes)-1
         
-        while a < len(nodes) - 1:
-            if nodes[a].val > nodes[a+1].val:
-                break
-            else:
-                a += 1
+        while a < len(nodes) - 1 and nodes[a].val < nodes[a+1].val:
+            a += 1
         
-        while b >= 1:
-            if nodes[b-1].val > nodes[b].val:
-                break
-            else:
-                b -= 1       
+        while b >= 1 and nodes[b-1].val < nodes[b].val:
+            b -= 1       
                 
         nodes[a].val, nodes[b].val = nodes[b].val, nodes[a].val
                 
