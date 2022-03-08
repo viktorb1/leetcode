@@ -6,7 +6,8 @@ class Solution:
         
         for i in range(1, len(prefixsums)):
             prefixsums[i] = prefixsums[i-1] + nums[i-1]
-                
+            
+        print(prefixsums)
         for i in range(len(nums)):
             idx = bisect_left(prefixsums, target + prefixsums[i])
             if idx != len(prefixsums):
