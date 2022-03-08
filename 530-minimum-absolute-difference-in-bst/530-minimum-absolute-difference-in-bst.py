@@ -8,16 +8,15 @@ class Solution:
     def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
         def inorder(root):
             if root:
+                nonlocal res, prev
                 inorder(root.left)
-                inord.append(root.val)
+                if prev:
+                    res = min(res, abs(root.val - prev.val))
+                prev = root
                 inorder(root.right)
         
-        inord = []
-        inorder(root)
         res = float('inf')
-        
-        for n1, n2 in zip(inord, inord[1:]):
-            res = min(res, n2 - n1)
-        
+        prev = None
+        inorder(root)
         return res
                 
