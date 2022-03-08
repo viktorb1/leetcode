@@ -8,7 +8,6 @@ class Solution:
             
         for i in range(len(nums)):
             low, high = i, len(nums) - 1
-            mid = 0
             
             while low <= high:
                 mid = (low + high) // 2
