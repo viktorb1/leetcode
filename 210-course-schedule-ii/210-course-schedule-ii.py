@@ -1,10 +1,7 @@
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
-        d = dict()
+        d = defaultdict(list)
         
-        for p in range(numCourses):
-            d[p] = []
-            
         for p1, p2 in prerequisites:
             d[p2].append(p1)
 
@@ -29,7 +26,7 @@ class Solution:
         sol = deque()
         visiting, visited = set(), set()
         
-        for key in d.keys():
+        for key in range(numCourses):
             if key not in visited:
                 if not dfs(key):
                     return []
