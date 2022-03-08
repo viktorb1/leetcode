@@ -14,13 +14,13 @@ class Solution:
             
         nodes = []
         inorder(root)
-        a, b = 0, len(nodes)-1
+        i, j = 0, len(nodes)-1
         
-        while a < len(nodes) - 1 and nodes[a].val < nodes[a+1].val:
-            a += 1
+        while i < len(nodes) - 1 and nodes[i].val < nodes[i+1].val:
+            i += 1
         
-        while b >= 1 and nodes[b-1].val < nodes[b].val:
-            b -= 1       
+        while j >= 1 and nodes[j-1].val < nodes[j].val:
+            j -= 1       
                 
-        nodes[a].val, nodes[b].val = nodes[b].val, nodes[a].val
+        nodes[i].val, nodes[j].val = nodes[j].val, nodes[i].val
                 
