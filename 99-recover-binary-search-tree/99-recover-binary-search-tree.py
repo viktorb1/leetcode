@@ -19,7 +19,6 @@ class Solution:
             
         nodes = []
         inorder(root)
-        print([node.val for node in nodes])
         a, b = 0, len(nodes)-1
         
         while a < len(nodes) - 1:
