@@ -7,12 +7,12 @@ class Solution:
             prefixsums[i] = prefixsums[i-1] + nums[i-1]
             
         for i in range(len(nums)):
-            low, high = i, len(nums) - 1
+            low, high = i, len(prefixsums) - 1
             
             while low <= high:
                 mid = (low + high) // 2
-                if prefixsums[mid+1] - prefixsums[i] >= target:
-                    minSize = min(minSize, mid-i+1)
+                if prefixsums[mid] - prefixsums[i] >= target:
+                    minSize = min(minSize, mid-i)
                     high = mid - 1
                 else:
                     low = mid + 1
