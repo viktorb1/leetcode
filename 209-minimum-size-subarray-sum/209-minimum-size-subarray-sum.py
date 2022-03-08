@@ -1,20 +1,21 @@
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-        minSize = float('inf')
+        smallest = float('inf')
         
         prefixsums = [0] + [0] * len(nums)
+        
         for i in range(1, len(prefixsums)):
             prefixsums[i] = prefixsums[i-1] + nums[i-1]
-            
+    
         for i in range(len(nums)):
-            low, high = i, len(prefixsums) - 1
+            start, end = 0, len(prefixsums) - 1
             
-            while low <= high:
-                mid = (low + high) // 2
+            while start <= end:
+                mid = (start + end) // 2
                 if prefixsums[mid] - prefixsums[i] >= target:
-                    minSize = min(minSize, mid-i)
-                    high = mid - 1
+                    smallest = min(smallest, mid-i)
+                    end = mid - 1
                 else:
-                    low = mid + 1
-        
-        return 0 if minSize == float('inf') else minSize
+                    start = mid + 1
+            
+        return smallest if smallest != float('inf') else 0
