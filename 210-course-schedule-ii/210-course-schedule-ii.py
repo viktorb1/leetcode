@@ -19,7 +19,7 @@ class Solution:
             if key in d:
                 for neighbor in d[key]:
                     if not dfs(neighbor):
-                        return False        
+                        return False
             
             visiting.discard(key)
             visited.add(key)
