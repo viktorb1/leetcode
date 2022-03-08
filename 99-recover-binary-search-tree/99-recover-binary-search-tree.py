@@ -7,12 +7,10 @@
 class Solution:
     def recoverTree(self, root: Optional[TreeNode]) -> None:
         def inorder(root):
-            if not root:
-                return
-            
-            inorder(root.left)
-            nodes.append(root)
-            inorder(root.right)
+            if root:
+                inorder(root.left)
+                nodes.append(root)
+                inorder(root.right)
             
         nodes = []
         inorder(root)
