@@ -1,3 +1,4 @@
+[Discussion Post (created on 11/2/2022 at 13:2)](https://leetcode.com/problems/simplify-path/discuss/1840752/Python-Straigh-Forward-Iterative-Solution)  
 <h2>71. Simplify Path</h2><h3>Medium</h3><hr><div><p>Given a string <code>path</code>, which is an <strong>absolute path</strong> (starting with a slash <code>'/'</code>) to a file or directory in a Unix-style file system, convert it to the simplified <strong>canonical path</strong>.</p>
 
 <p>In a Unix-style file system, a period <code>'.'</code> refers to the current directory, a double period <code>'..'</code> refers to the directory up a level, and any multiple consecutive slashes (i.e. <code>'//'</code>) are treated as a single slash <code>'/'</code>. For this problem, any other format of periods such as <code>'...'</code> are treated as file/directory names.</p>
