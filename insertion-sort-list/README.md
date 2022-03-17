@@ -1,3 +1,4 @@
+[Discussion Post (created on 17/2/2022 at 14:47)](https://leetcode.com/problems/insertion-sort-list/discuss/1859141/Python-Insertion-Sort-O(1))  
 <h2>147. Insertion Sort List</h2><h3>Medium</h3><hr><div><p>Given the <code>head</code> of a singly linked list, sort the list using <strong>insertion sort</strong>, and return <em>the sorted list's head</em>.</p>
 
 <p>The steps of the <strong>insertion sort</strong> algorithm:</p>
