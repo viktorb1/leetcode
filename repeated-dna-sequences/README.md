@@ -1,3 +1,4 @@
+[Discussion Post (created on 19/2/2022 at 11:45)](https://leetcode.com/problems/repeated-dna-sequences/discuss/1864768/Python-Rabin-Karp-TLE)  
 <h2>187. Repeated DNA Sequences</h2><h3>Medium</h3><hr><div><p>The <strong>DNA sequence</strong> is composed of a series of nucleotides abbreviated as <code>'A'</code>, <code>'C'</code>, <code>'G'</code>, and <code>'T'</code>.</p>
 
 <ul>
