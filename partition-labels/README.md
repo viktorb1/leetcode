@@ -1,3 +1,4 @@
+[Discussion Post (created on 21/2/2022 at 0:57)](https://leetcode.com/problems/partition-labels/discuss/1869613/Python-Sliding-Window-Solution)  
 <h2>763. Partition Labels</h2><h3>Medium</h3><hr><div><p>You are given a string <code>s</code>. We want to partition the string into as many parts as possible so that each letter appears in at most one part.</p>
 
 <p>Note that the partition is done so that after concatenating all the parts in order, the resultant string should be <code>s</code>.</p>
