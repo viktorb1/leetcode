@@ -16,9 +16,8 @@ class Solution:
                     nex.append(node.left)
                 if node.right:
                     nex.append(node.right)
-    
+            
+            if not nex: break
             q.append(nex)
         
-        q = q[:-1]
         return [row[-1].val for row in q]
-            
