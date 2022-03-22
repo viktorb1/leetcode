@@ -5,10 +5,9 @@ class Solution:
         
         num = 0
         for i in range(len(left)):
-            if left[i] == right[i]:
-                if left[i] == '1':
-                    num += pow(2, len(left)-i-1)
-            else:
+            if left[i] == right[i] == '1':
+                num += pow(2, len(left)-i-1)
+            elif left[i] != right[i]:
                 break
         
         return num
