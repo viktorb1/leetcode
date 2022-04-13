@@ -1,3 +1,4 @@
+[Discussion Post (created on 13/3/2022 at 11:43)](https://leetcode.com/problems/spiral-matrix-ii/discuss/1943978/Python-Straightforward-Bruteforce-Solution)  
 <h2>59. Spiral Matrix II</h2><h3>Medium</h3><hr><div><p>Given a positive integer <code>n</code>, generate an <code>n x n</code> <code>matrix</code> filled with elements from <code>1</code> to <code>n<sup>2</sup></code> in spiral order.</p>
 
 <p>&nbsp;</p>
