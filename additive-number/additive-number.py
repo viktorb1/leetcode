@@ -1,29 +1,27 @@
 class Solution:
     def isAdditiveNumber(self, num: str) -> bool:
-    
         def dfs(prev1, prev2, rem):
             if not rem:
                 return True
             
             for i in range(1, len(rem)+1):
-                if rem[0] == '0' and num[:i] != '0':
+                if rem[:i].startswith('0') and len(rem[:i]) > 1:
                     continue
-                    
+                
                 if prev1 + prev2 == int(rem[:i]):
                     if dfs(prev2, int(rem[:i]), rem[i:]):
                         return True
             
             return False
         
-        for i in range(2, len(num)+1):
+        for i in range(2, len(num)):
             for j in range(1, i):
-                if num[j] == '0' and num[j:i] != '0':
+                if num[:j].startswith('0') and len(num[:j]) > 1:
                     continue
-                if num[0] == '0' and num[:j] != '0':
+                if num[j:i].startswith('0') and len(num[j:i]) > 1:
                     continue
                 
-                if num[i:] and dfs(int(num[:j]), int(num[j:i]), num[i:]):
+                if dfs(int(num[:j]), int(num[j:i]), num[i:]):
                     return True
         
         return False
-                
