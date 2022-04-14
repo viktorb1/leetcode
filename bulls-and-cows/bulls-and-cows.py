@@ -9,14 +9,8 @@ class Solution:
                 bulls += 1
                 secret_c[a] -= 1
                 guess_c[a] -= 1
-                    
+        
         for l in secret_c:
-            if l in guess_c:
-                cows += min(secret_c[l], guess_c[l])
+            cows += min(secret_c[l], guess_c[l])
         
         return str(bulls) + 'A' + str(cows) + 'B'
-        
-        
-        
-        
-        
