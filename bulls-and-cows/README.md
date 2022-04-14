@@ -1,3 +1,4 @@
+[Discussion Post (created on 14/3/2022 at 12:53)](https://leetcode.com/problems/bulls-and-cows/discuss/1947570/Python-Simple-Solution-Using-Counter)  
 <h2>299. Bulls and Cows</h2><h3>Medium</h3><hr><div><p>You are playing the <strong><a href="https://en.wikipedia.org/wiki/Bulls_and_Cows" target="_blank">Bulls and Cows</a></strong> game with your friend.</p>
 
 <p>You write down a secret number and ask your friend to guess what the number is. When your friend makes a guess, you provide a hint with the following info:</p>
