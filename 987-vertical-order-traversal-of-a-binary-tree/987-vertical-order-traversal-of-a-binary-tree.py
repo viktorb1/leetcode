@@ -15,10 +15,8 @@ class Solution:
         while queue:       
             queue = sorted(queue, key=lambda x: (x[1], x[0].val))
             
-            for node, i in queue:
-                sol[i].append(node.val)
-            
             for n, x in queue:
+                sol[x].append(n.val)
                 if n.left: nex.append((n.left, x-1))
                 if n.right: nex.append((n.right, x+1))
 
