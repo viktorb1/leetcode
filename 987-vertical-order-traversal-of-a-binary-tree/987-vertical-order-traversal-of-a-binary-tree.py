@@ -10,7 +10,6 @@ class Solution:
     def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
         queue = [(root, 0)]
         nex = []
-        x = 0
         sol = defaultdict(list)
         
         while queue:       
