@@ -18,9 +18,8 @@ class Solution:
                 else:
                     sol.append(-1)
                     break
-            
-            if y == len(grid):
+            else:
                 sol.append(x)
-                
+            
         return sol
                 
