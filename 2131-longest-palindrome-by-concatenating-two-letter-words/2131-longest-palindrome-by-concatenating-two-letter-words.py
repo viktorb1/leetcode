@@ -11,12 +11,12 @@ class Solution:
                 del both_different[w]
                 del both_different[w[::-1]]
         
-        at_least_one_odd = 0
+        leftover = 0
         for w in both_same:
             if both_same[w] % 2 == 1:
                 total += 2 * (both_same[w] - 1)
-                at_least_one_odd = 2
+                leftover = 2
             else:
                 total += 2 * both_same[w]
                         
-        return total + at_least_one_odd
+        return total + leftover
