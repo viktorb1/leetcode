@@ -1,9 +1,10 @@
 class Solution:
     def findNumberOfLIS(self, nums: List[int]) -> int:
         memo = {}
+        sums = defaultdict(int)
         
+        @cache
         def dfs(i):
-            if i in memo: return memo[i]
             largest_length = 1
             count = 1
             
@@ -17,11 +18,11 @@ class Solution:
                         count += cur_count
                     
             memo[i] = [largest_length, count]
+            sums[largest_length] += count
             return [largest_length, count]
         
         
         for i in range(len(nums)-1, -1, -1):
             dfs(i)
         
-        largest = max(memo.values(), key=lambda x: x[0])[0]
-        return sum([x[1] for x in memo.values() if x[0] == largest])
+        return sums[max(sums)]
