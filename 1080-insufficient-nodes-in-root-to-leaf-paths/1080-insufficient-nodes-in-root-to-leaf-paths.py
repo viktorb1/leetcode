@@ -10,7 +10,6 @@ class Solution:
         self.limit = limit
         delete, _ = self.inorder(root)
         return root if not delete else None
-         
         
     def inorder(self, node, total = set()):
         if not node: return (None, [])
