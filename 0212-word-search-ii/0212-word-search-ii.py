@@ -27,22 +27,18 @@ class Solution:
         cur = self.root
         
         def dfs(i, j, cur, word):
-            lcur = cur
-            cur = cur[-1]
             
-            if cur.isWord:
-                for l in lcur:
-                    l.count -= 1
-                
+            if cur[-1].isWord:
+                for l in cur: l.count -= 1
                 sol.add(word)
-                cur.isWord = False
+                cur[-1].isWord = False
             
             save = board[i][j]
             board[i][j] = "#"
             
             for x, y in ((i+1, j), (i, j+1), (i-1, j), (i, j-1)):
-                if 0 <= x < len(board) and 0 <= y < len(board[0]) and board[x][y] in cur.children and cur.count > 0:
-                    dfs(x, y, lcur + [cur.children[board[x][y]]], word + board[x][y])
+                if 0 <= x < len(board) and 0 <= y < len(board[0]) and board[x][y] in cur[-1].children and cur[-1].count > 0:
+                    dfs(x, y, cur + [cur[-1].children[board[x][y]]], word + board[x][y])
         
             board[i][j] = save
         
