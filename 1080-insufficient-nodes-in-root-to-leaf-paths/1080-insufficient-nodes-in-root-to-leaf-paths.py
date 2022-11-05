@@ -22,6 +22,6 @@ class Solution:
         
         if delete_left: node.left = None
         if delete_right: node.right = None
-                                             
-        should_delete = all(self.limit > val for val in sums_left + sums_right)
+                                           
+        should_delete = self.limit > max(sums_left + sums_right)
         return (should_delete, sums_left + sums_right)
