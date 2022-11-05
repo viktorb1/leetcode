@@ -27,7 +27,6 @@ class Solution:
         cur = self.root
         
         def dfs(i, j, cur, word):
-            
             if cur[-1].isWord:
                 for l in cur: l.count -= 1
                 sol.add(word)
