@@ -15,8 +15,9 @@ class Solution:
         if not node: return (None, [])
         if not node.left and not node.right:
             total = total.union({node})
-            should_delete = self.limit > sum([n.val for n in total])
-            return (should_delete, [sum([n.val for n in total])])
+            row_sum = sum([n.val for n in total])
+            should_delete = self.limit > row_sum
+            return (should_delete, [row_sum])
             
         delete_left, sums_left = self.inorder(node.left, total.union({node}))
         delete_right, sums_right = self.inorder(node.right, total.union({node}))
