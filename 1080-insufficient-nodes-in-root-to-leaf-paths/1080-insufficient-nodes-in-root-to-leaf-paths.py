@@ -7,40 +7,24 @@
 class Solution:
     def sufficientSubset(self, root: Optional[TreeNode], limit: int) -> Optional[TreeNode]:
         self.paths = defaultdict(list)
-        self.inorder(root)
-        self.to_delete = set()
-        
-        for x, sums in self.paths.items():
-            if all(y < limit for y in sums):
-                self.to_delete.add(x)
-        
-        self.prune(root)
-        return root if root not in self.to_delete else None
-        
-    def prune(self, node):
-        if not node: 
-            return
-        if node.left and node.left in self.to_delete:
-            node.left = None
-        elif node.left:
-            self.prune(node.left)
-        
-        if node.right and node.right in self.to_delete:
-            node.right = None
-        elif node.right:
-            self.prune(node.right)
+        self.limit = limit
+        delete, _ = self.inorder(root)
+        return root if not delete else None
          
         
     def inorder(self, node, total = set()):
-        if not node:
-            return
-        if not node or not node.left and not node.right:
+        if not node: return (None, [])
+        if not node.left and not node.right:
             total = total.union({node})
-            total_sum = sum([node.val for node in total])
-            for node in total:
-                self.paths[node].append(total_sum)
-            return
+            should_delete = self.limit > sum([n.val for n in total])
+            return (should_delete, [sum([n.val for n in total])])
+            
+        delete_left, sums_left = self.inorder(node.left, total.union({node}))
+        delete_right, sums_right = self.inorder(node.right, total.union({node}))
         
-        self.inorder(node.left, total.union({node}))
-        self.inorder(node.right, total.union({node}))
-        
+        if delete_left: node.left = None
+        if delete_right: node.right = None
+                                             
+        combined = sums_left + sums_right
+        should_delete = all(self.limit > val for val in sums_left + sums_right)
+        return (should_delete, sums_left + sums_right)
