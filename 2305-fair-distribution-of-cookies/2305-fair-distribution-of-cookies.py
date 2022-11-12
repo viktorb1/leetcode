@@ -2,6 +2,9 @@ class Solution:
     def distributeCookies(self, cookies: List[int], k: int) -> int:
         self.min_range = float('inf')
         
+        if k == len(cookies):
+            return max(cookies)
+        
         def dfs(x):
             if x == len(cookies): 
                 print(data)
