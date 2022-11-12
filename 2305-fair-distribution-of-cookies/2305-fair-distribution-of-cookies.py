@@ -4,7 +4,11 @@ class Solution:
         
         def dfs(x):
             if x == len(cookies): 
+                print(data)
                 self.min_range = min(max(data), self.min_range)
+                return
+            
+            if max(data) >= self.min_range:
                 return
             
             for j in range(k):
