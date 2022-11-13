@@ -1,3 +1,4 @@
+import copy
 # Definition for a binary tree node.
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
@@ -15,4 +16,4 @@ class Solution:
             root.right = self.recursive(node1.right, node2.right)
             return root
         else:
-            return node1 if node1 else node2
+            return copy.deepcopy(node1) if node1 else copy.deepcopy(node2)
