@@ -1,19 +1,30 @@
 
 class Solution:
     def removeStones(self, points):
-        uf = {}
+        visited = defaultdict(bool)
+        rows = defaultdict(list)
+        cols = defaultdict(list)
         
-        def union(x, y):
-            if x not in uf: uf[x] = x
-            if y not in uf: uf[y] = y
-            uf[find(x)] = find(y)
+        for i, (x,y) in enumerate(points):
+            rows[x].append(i)
+            cols[y].append(i)
         
-        def find(x):
-            if uf[x] != x:
-                return find(uf[x])
-            return x
-        
-        for x, y in points:
-            union(x, ~y)
-        
-        return len(points) - len(set(find(x) for x,y in points))
+        def dfs(x, y):
+            count = 1
+            visited[(x,y)] = True
+            
+            for r in rows[x]:
+                if not visited[tuple(points[r])]:
+                    count += dfs(points[r][0], points[r][1])
+            
+            for c in cols[y]:
+                if not visited[tuple(points[c])]:
+                    count += dfs(points[c][0], points[c][1])
+            
+            return count
+    
+        total = 0
+        for x,y in points:
+            if not visited[(x,y)]:
+                total += dfs(x, y) - 1
+        return total
