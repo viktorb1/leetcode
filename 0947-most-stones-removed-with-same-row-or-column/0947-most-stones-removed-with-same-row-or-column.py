@@ -1,7 +1,7 @@
 
 class Solution:
     def removeStones(self, points):
-        visited = defaultdict(bool)
+        seen = set()
         rows = defaultdict(list)
         cols = defaultdict(list)
         
@@ -11,20 +11,20 @@ class Solution:
         
         def dfs(x, y):
             count = 1
-            visited[(x,y)] = True
+            seen.add((x,y))
             
             for r in rows[x]:
-                if not visited[tuple(points[r])]:
+                if tuple(points[r]) not in seen:
                     count += dfs(points[r][0], points[r][1])
             
             for c in cols[y]:
-                if not visited[tuple(points[c])]:
+                if tuple(points[c]) not in seen:
                     count += dfs(points[c][0], points[c][1])
             
             return count
     
         total = 0
         for x,y in points:
-            if not visited[(x,y)]:
+            if (x,y) not in seen:
                 total += dfs(x, y) - 1
         return total
