@@ -1,6 +1,3 @@
-from math import atan, atan2, pi
-from typing import List, Tuple
-
 class Solution:
     def outerTrees(self, points: List[Tuple[int, int]]) -> List[Tuple[int, int]]:
         def angle(a, b, c):
