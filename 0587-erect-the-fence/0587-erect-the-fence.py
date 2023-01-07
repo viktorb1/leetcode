@@ -9,7 +9,7 @@ class Solution:
 
         if len(points) < 3: return points
         points = [tuple(p) for p in points]
-        two = first = min(points, key = lambda point: point[0])
+        two = first = min(points, key = lambda point: point[0]) # get leftmost
         one = (two[0], two[1]+1) # doesn't matter what we set it to, as long as it's not equal to `two`
         hull = {two}
 
