@@ -1,4 +1,4 @@
-from math import atan, atan2, pi, degrees
+from math import atan, atan2, pi
 from typing import List, Tuple
 
 class Solution:
