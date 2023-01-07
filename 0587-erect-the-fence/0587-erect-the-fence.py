@@ -1,12 +1,8 @@
-from math import atan, atan2, pi, dist
-from typing import List, Tuple
-
 class Solution:
     def outerTrees(self, points: List[Tuple[int, int]]) -> List[Tuple[int, int]]:
         def cross_prod(x, y, z):
             a, b, c, d, e, f = x[0], x[1], y[0], y[1], z[0], z[1]
             return (f-b)*(c-a) - (d-b)*(e-a)
-
 
         if len(points) < 3: return points
         two = first = min(points, key = lambda point: (point[0], point[1])) # get leftmost
