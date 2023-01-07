@@ -25,7 +25,7 @@ class Solution:
                     i = 0
                     most_counter = [three]
                 elif c == 0:
-                    if dist(two, most_counter[-1]) < dist(two, three) and dist(two, most_counter[0]) < dist(two, three):
+                    if dist(two, most_counter[i]) < dist(two, three):
                         i = len(most_counter)
 
                     most_counter.append(three)
