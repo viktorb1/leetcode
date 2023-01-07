@@ -10,9 +10,10 @@ class Solution:
             return deg if deg != 180 else -180
 
         if len(points) < 3: return points
+        points = [tuple(p) for p in points]
         two = first = min(points, key = lambda point: point[0])
         one = (two[0], two[1]+1)
-        hull = {tuple(two),}
+        hull = {two}
 
         while True:
             smallest = None
@@ -31,7 +32,7 @@ class Solution:
                 elif a == ang:
                     same.append(three)
 
-            hull = hull.union([tuple(s) for s in same])
+            hull = hull.union(same)
 
             if smallest == first:
                 break
