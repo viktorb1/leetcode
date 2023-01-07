@@ -19,7 +19,7 @@ class Solution:
             collinear = []
 
             for three in points:
-                if three in (one, two):
+                if three in {one, two}:
                     continue
                 a = angle(one, two, three)
 
