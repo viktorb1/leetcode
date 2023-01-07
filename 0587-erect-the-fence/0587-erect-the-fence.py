@@ -10,13 +10,13 @@ class Solution:
         if len(points) < 3: return points
         points = [tuple(p) for p in points]
         two = first = min(points, key = lambda point: point[0])
-        one = (two[0], two[1]+1) # doesn't matter what we set it to, as long as it's not equal to two
+        one = (two[0], two[1]+1) # doesn't matter what we set it to, as long as it's not equal to `two`
         hull = {two}
 
         while True:
             smallest = None
             ang = float('inf')
-            same = []
+            collinear = []
 
             for three in points:
                 if three in (one, two):
@@ -26,11 +26,11 @@ class Solution:
                 if a < ang:
                     smallest = three
                     ang = a
-                    same = [three]
+                    collinear = [three]
                 elif a == ang:
-                    same.append(three)
+                    collinear.append(three)
 
-            hull = hull.union(same)
+            hull = hull.union(collinear)
             if smallest == first: break
             one, two = two, smallest
 
