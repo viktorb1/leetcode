@@ -14,7 +14,7 @@ class Solution:
 
         while True:
             ang = float('inf')
-            collinear = []
+            smallest = []
 
             for three in points:
                 if three in [one, two]:
@@ -23,12 +23,12 @@ class Solution:
                 a = angle(one, two, three)
                 if a < ang:
                     ang = a
-                    collinear = [three]
+                    smallest = [three]
                 elif a == ang:
-                    collinear.append(three)
+                    smallest.append(three)
 
-            hull += collinear
-            if collinear[0] == first: break
-            one, two = two, collinear[0]
+            hull += smallest
+            if smallest[0] == first: break
+            one, two = two, smallest[0]
 
         return set(tuple(h) for h in hull)
