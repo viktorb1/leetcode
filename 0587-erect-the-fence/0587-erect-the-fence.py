@@ -1,14 +1,11 @@
-from math import atan2, pi, degrees
+from math import atan, atan2, pi, degrees
 from typing import List, Tuple
 
 class Solution:
     def outerTrees(self, points: List[Tuple[int, int]]) -> List[Tuple[int, int]]:
         def angle(a, b, c):
-            AB = (a[0] - b[0], a[1] - b[1])
-            AC = (c[0] - b[0], c[1] - b[1])
-            dot_prod = AB[0] * AC[0] + AB[1] * AC[1]
-            deg = degrees(atan2(AB[0] * AC[1] - AB[1] * AC[0], dot_prod))
-            return deg if deg != 180 else -180
+            angle = (atan2(a[0]-b[0],a[1]-b[1]) - atan2(c[0]-b[0],c[1]-b[1])) * 180/pi
+            return angle if angle < 180 else (angle - 360)
 
         if len(points) < 3: return points
         points = [tuple(p) for p in points]
