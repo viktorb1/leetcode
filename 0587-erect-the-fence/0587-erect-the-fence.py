@@ -10,7 +10,6 @@ class Solution:
 
         if len(points) < 3: return points
         two = first = min(points, key = lambda point: (point[0], point[1])) # get leftmost
-        one = (two[0], two[1]+1) # doesn't matter what we set it to, as long as it's not equal to `two`
         hull = [two]
 
         while True:
@@ -18,7 +17,7 @@ class Solution:
             i = 0
 
             for three in points:
-                if three in [one, two]:
+                if three == two:
                     continue
                 if not most_counter: 
                     most_counter = [three]
