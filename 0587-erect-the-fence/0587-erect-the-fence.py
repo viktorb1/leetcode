@@ -1,4 +1,5 @@
-from math import atan2, pi
+from math import atan2, pi, degrees
+from typing import List, Tuple
 
 class Solution:
     def outerTrees(self, points: List[Tuple[int, int]]) -> List[Tuple[int, int]]:
@@ -12,7 +13,7 @@ class Solution:
         if len(points) < 3: return points
         points = [tuple(p) for p in points]
         two = first = min(points, key = lambda point: point[0])
-        one = (two[0], two[1]+1)
+        one = (two[0], two[1]+1) # doesn't matter what we set it to, as long as it's not equal to two
         hull = {two}
 
         while True:
@@ -33,11 +34,7 @@ class Solution:
                     same.append(three)
 
             hull = hull.union(same)
-
-            if smallest == first:
-                break
-
+            if smallest == first: break
             one, two = two, smallest
-
 
         return hull
