@@ -11,7 +11,7 @@ class Solution:
                 
                 if total == 0:
                     sol.add((one, nums[l], nums[r]))
-                    l += 1
+                    r -= 1
                 elif total < 0:
                     l += 1
                 else:
