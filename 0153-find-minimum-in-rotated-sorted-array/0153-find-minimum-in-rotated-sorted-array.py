@@ -6,9 +6,10 @@ class Solution:
             m = (l+h)//2
             
             if l == h:
-                return nums[l]
-            if nums[m] > nums[h]:
-                l = m + 1
+                return nums[m]
+            elif nums[m] > nums[h]:
+                l = m+1
             elif nums[m] < nums[h]:
                 h = m
-            
+        
+        return 0
