@@ -8,12 +8,12 @@ class Solution:
             elif i in memo:
                 return memo[i]
             
-            starts = False
+            can_break_remain = False
             for w in wordDict:
                 if s[i:i+len(w)] == w:
-                    starts |= dfs(i+len(w))
+                    can_break_remain |= dfs(i+len(w))
             
-            memo[i] = starts
-            return starts
+            memo[i] = can_break_remain
+            return can_break_remain
     
         return dfs()
