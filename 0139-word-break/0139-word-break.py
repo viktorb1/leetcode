@@ -1,19 +1,12 @@
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
-        memo = {}
+        dp = [False] * len(s) + [True]
         
-        def dfs(i=0):
-            if i == len(s):
-                return True
-            elif i in memo:
-                return memo[i]
-            
-            can_break_remain = False
+        for i in range(len(s)-1, -1, -1):
             for w in wordDict:
-                if s[i:i+len(w)] == w:
-                    can_break_remain |= dfs(i+len(w))
-            
-            memo[i] = can_break_remain
-            return can_break_remain
-    
-        return dfs()
+                if len(w) <= len(s)-i and s[i:i+len(w)] == w:
+                    dp[i] = dp[i + len(w)]
+                if dp[i]:
+                    break
+
+        return dp[0]
