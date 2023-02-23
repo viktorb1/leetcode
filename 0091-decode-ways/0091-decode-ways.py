@@ -1,18 +1,11 @@
 class Solution:
     def numDecodings(self, s: str) -> int:
-        @cache
-        def decode(i):
+        dp = [1] + [0]*(len(s))
+        
+        for i in range(1, len(dp)):
+            if s[i-1] != '0':
+                dp[i] += dp[i-1]
+            if i > 1 and 0 < int(s[i-2:i]) <= 26 and s[i-2] != '0':
+                dp[i] += dp[i-2]
             
-            if i < 0:
-                return 1
-            
-            total = 0
-
-            if s[i] != '0':
-                total += decode(i-1)
-            if i >= 1 and 0 < int(s[i-1:i+1]) <= 26 and s[i-1] != '0':
-                total += decode(i-2)
-            
-            return total
-    
-        return decode(len(s)-1)
+        return dp[-1]
