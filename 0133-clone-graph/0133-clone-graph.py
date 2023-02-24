@@ -6,7 +6,6 @@ class Node:
         self.neighbors = neighbors if neighbors is not None else []
 """
 from collections import deque
-
 class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
         if not node: return
@@ -15,6 +14,7 @@ class Solution:
         
         while q:
             cur = q.popleft()
+            
             for n in cur.neighbors:
                 if n not in copies:
                     copies[n] = Node(n.val)
