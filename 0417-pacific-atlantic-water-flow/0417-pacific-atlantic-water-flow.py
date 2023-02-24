@@ -1,30 +1,25 @@
 class Solution:
     def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
-        sol = []
-        def reachOcean(i, j, coord):
-            if i == coord[0] or j == coord[1]:
-                return True
+        pacific, atlantic = set(), set()
+        rows = len(heights)
+        cols = len(heights[0])
+        
+        
+        def climb(i, j, set_container):
+            set_container.add((i,j))
+            for (x, y) in [(i-1, j), (i+1, j), (i, j-1), (i, j+1)]:
+                if not (0 <= x < rows) or not (0 <= y < cols) or heights[i][j] > heights[x][y] or (x, y) in set_container:
+                    continue
+                else:
+                    climb(x, y, set_container)
+            
 
-            tmp = heights[i][j]
-            heights[i][j] = float('inf')
-            
-            
-            for x, y in ((i+1, j), (i, j+1), (i-1, j), (i, j-1)):
-                if isInRange(x, y) and tmp >= heights[x][y] and reachOcean(x, y, coord):
-                    heights[i][j] = tmp
-                    return True
-            
-            heights[i][j] = tmp
-            return False
+        for r in range(rows):
+            climb(r, 0, pacific)
+            climb(r, cols-1, atlantic)
         
-        def isInRange(i, j):
-            return i >= 0 and i < len(heights) and j >= 0 and j < len(heights[0])
+        for c in range(cols):
+            climb(0, c, pacific)
+            climb(rows-1, c, atlantic)
         
-        for i in range(len(heights)):
-            for j in range(len(heights[0])):
-                if reachOcean(i, j, (0, 0)) and reachOcean(i, j, (len(heights)-1, len(heights[0])-1)):
-                    sol.append((i, j))
-                    
-        return sol
-                    
-                    
+        return pacific.intersection(atlantic)
