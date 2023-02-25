@@ -5,7 +5,7 @@ class Solution:
         
         for n in avail:
             count = 1
-            if n-1 not in avail:
+            if n-1 not in avail: # check to make sure it's not part of the middle of a sequence
                 while n + 1 in avail:
                     count += 1
                     n += 1
