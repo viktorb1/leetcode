@@ -8,9 +8,7 @@ class Solution:
         def climb(i, j, set_container):
             set_container.add((i,j))
             for (x, y) in [(i-1, j), (i+1, j), (i, j-1), (i, j+1)]:
-                if not (0 <= x < rows) or not (0 <= y < cols) or heights[i][j] > heights[x][y] or (x, y) in set_container:
-                    continue
-                else:
+                if (0 <= x < rows) and (0 <= y < cols) and heights[i][j] <= heights[x][y] and (x, y) not in set_container:
                     climb(x, y, set_container)
             
 
