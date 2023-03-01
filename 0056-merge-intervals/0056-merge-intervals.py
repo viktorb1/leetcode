@@ -1,7 +1,7 @@
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         sol = []
-        intervals = sorted(intervals, key=lambda x: x[0])
+        intervals.sort()
         cur = intervals[0]
 
         for j, i in enumerate(intervals[1:]):
