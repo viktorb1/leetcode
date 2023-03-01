@@ -1,20 +1,16 @@
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        sol = []
         intervals.sort()
         cur = intervals[0]
-
-        for j, i in enumerate(intervals[1:]):
-            if cur[0] > i[1]:
-                sol.append(i)
-            elif cur[1] < i[0]:
-                sol.append(cur)
-                if j + 1 < len(intervals):
-                    cur = intervals[j+1]
+        sol = []
+        
+        for i, (x,y) in enumerate(intervals[1:]):
+            if cur[1] >= x:
+                cur = [min(cur[0],x), max(cur[1],y)]
             else:
-                cur = [min(cur[0], i[0]), max(cur[1], i[1])]
+                sol.append(cur)
+                cur = intervals[i+1]
+                
         
         sol.append(cur)
         return sol
-                
-            
