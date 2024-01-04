@@ -14,7 +14,6 @@ class Solution:
                     ops += 1
                 elif c >= 2:
                     c -= 2
-                    print(c)
                     ops += 1
                 else:
                     return -1
