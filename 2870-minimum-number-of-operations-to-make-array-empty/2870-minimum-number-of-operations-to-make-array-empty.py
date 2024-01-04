@@ -10,7 +10,6 @@ class Solution:
                     c -= 4
                 elif c >= 3:
                     c -= 3
-                    print(c)
                     ops += 1
                 elif c >= 2:
                     c -= 2
