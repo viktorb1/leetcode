@@ -23,5 +23,4 @@ class Solution:
         for _, c, _ in descriptions:
             all_nodes.remove(c)
         
-        [parent] = all_nodes
-        return nodes[parent]
+        return nodes[all_nodes.pop()]
