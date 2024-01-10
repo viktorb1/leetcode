@@ -20,8 +20,6 @@ class Solution:
             if n.right:
                 stack.append((n.right, n))
         
-        print(graph)
-        
         q = deque([start])
         seen = {start}
         ans = 0
