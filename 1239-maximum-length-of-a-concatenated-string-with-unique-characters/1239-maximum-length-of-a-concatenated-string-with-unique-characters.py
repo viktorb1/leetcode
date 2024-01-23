@@ -6,8 +6,7 @@ class Solution:
         for a in arr:
             s1 = set(a)
             for i, s2 in enumerate(dp):
-                if s1 & s2:
-                    continue
-                dp.append(s1.union(s2))
+                if not s1 & s2:
+                    dp.append(s1.union(s2))
         
         return max([len(a) for a in dp])
