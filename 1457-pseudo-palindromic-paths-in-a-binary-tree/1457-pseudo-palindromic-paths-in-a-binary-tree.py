@@ -31,5 +31,4 @@ class Solution:
         return count
             
     def is_palindrome(self, c):
-        c = c.values()        
-        return len([d for d in c if d % 2 == 1]) <= 1
+        return len([d for d in c.values() if d % 2 == 1]) <= 1
