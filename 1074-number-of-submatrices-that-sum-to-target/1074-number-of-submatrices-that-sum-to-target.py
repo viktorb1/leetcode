@@ -7,8 +7,7 @@ class Solution:
             row = [0]*m
 
             for i in range(sr, n):
-                for j in range(m):
-                    row[j] += matrix[i][j]
+                row = [x + y for x, y in zip(matrix[i], row)]
                 count += self.subarraySum(row, target)
 
         return count
