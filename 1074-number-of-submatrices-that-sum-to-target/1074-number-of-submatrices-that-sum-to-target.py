@@ -4,10 +4,9 @@ class Solution:
         count = 0
 
         for sr in range(n):
-            row = matrix[sr].copy()
-            count += self.subarraySum(row, target)
+            row = [0]*m
 
-            for i in range(sr+1, n):
+            for i in range(sr, n):
                 for j in range(m):
                     row[j] += matrix[i][j]
                 count += self.subarraySum(row, target)
