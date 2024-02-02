@@ -9,6 +9,7 @@ class Solution:
         if len(nums1) > len(nums2):
             return self.findMedianSortedArrays(nums2, nums1) 
         
+        # we are doing binary search on the partitions
         while l <= h:
             m = (l + h) // 2
                         
