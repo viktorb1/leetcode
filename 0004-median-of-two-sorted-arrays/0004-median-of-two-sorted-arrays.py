@@ -10,6 +10,7 @@ class Solution:
             return self.findMedianSortedArrays(nums2, nums1) 
         
         # we are doing binary search on the partitions
+        # m is the partition of nums1 and mid-m is the partition of nums2
         while l <= h:
             m = (l + h) // 2
                         
