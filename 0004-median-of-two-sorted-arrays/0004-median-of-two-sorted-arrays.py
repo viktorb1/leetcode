@@ -13,7 +13,8 @@ class Solution:
         # m is the partition of nums1 and mid-m is the partition of nums2
         while l <= h:
             m = (l + h) // 2
-                        
+            
+            # if the partitions make something out of bounds, we let it pass through our if statements on line 24
             r1 = nums1[m-1] if 0 < m <= len(nums1) else float('-inf')
             l1 = nums1[m] if 0 <= m < len(nums1) else float('inf')
             r2 = nums2[mid-m-1] if 0 < mid-m <= len(nums2) else float('-inf')
