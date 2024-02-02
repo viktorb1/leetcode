@@ -27,7 +27,7 @@ class Solution:
                 else:
                     return max(r1, r2)
             elif r1 > l2:
-                h = m - 1
+                h = m - 1 # decrease nums1's partition and increase nums2's partition
             else:
                 l = m + 1
 
