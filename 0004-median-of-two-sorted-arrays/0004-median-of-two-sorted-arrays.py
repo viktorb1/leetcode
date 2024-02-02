@@ -13,10 +13,10 @@ class Solution:
         while l <= h:
             m = (l + h) // 2
                         
-            r1 = float('-inf') if m == 0 else nums1[m-1]
-            l1 = float('inf') if m == len(nums1) else nums1[m]
-            r2 = float('-inf') if mid-m == 0 else nums2[mid-m-1]
-            l2 = float('inf') if mid-m == len(nums2) else nums2[mid-m]
+            r1 = nums1[m-1] if 0 < m <= len(nums1) else float('-inf')
+            l1 = nums1[m] if 0 <= m < len(nums1) else float('inf')
+            r2 = nums2[mid-m-1] if 0 < mid-m <= len(nums2) else float('-inf')
+            l2 = nums2[mid-m] if 0 <= mid-m < len(nums2) else float('inf')
             
             # r1 <= l1 automatically since nums1 is sorted, same for r2 <= l2
             if r1 <= l2 and r2 <= l1:
