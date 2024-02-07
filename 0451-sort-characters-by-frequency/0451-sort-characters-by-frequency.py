@@ -1,15 +1,12 @@
 class Solution:
     def frequencySort(self, s: str) -> str:
         count = Counter(s)
-        freq = {}
+        freq = defaultdict(list)
         for k, v in count.items():
-            if v not in freq:
-                freq[v] = [k]
-            else:
-                freq[v].append(k)
+            freq[v].append(k)
         
         ans = self.merge_sort(list(freq.items()))
-        ans = [ y for (x, y) in ans]
+        ans = [y for (x, y) in ans]
         flat = [y*count[y] for x in ans for y in x]
         return ''.join(flat)
         
