@@ -1,17 +1,10 @@
 class Solution:
     def numSquares(self, n: int) -> int:   
-        memo = {}
-        
-        def dfs(n):
-            if not n: return 0
-            if n in memo: return memo[n]
-            
-            ans = float('inf')
-            for j in range(int(sqrt(n)), 0, -1):
-                if n >= j*j:
-                    ans = min(ans, 1 + dfs(n-j*j))
+        dp = [0] + [float('inf')] * n
                     
-            memo[n] = ans
-            return ans
-        
-        return dfs(n)
+        for k in range(n+1):
+            for j in range(int(sqrt(n)), 0, -1):
+                if k >= j*j:
+                    dp[k] = min(dp[k], 1 + dp[k-j*j])
+
+        return dp[-1]
