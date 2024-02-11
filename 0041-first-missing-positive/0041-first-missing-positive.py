@@ -1,5 +1,3 @@
-
-
 class Solution:
     def firstMissingPositive(self, nums: List[int]) -> int:
         nums = list(set(nums))
@@ -17,4 +15,4 @@ class Solution:
             if 0 < n <= len(nums):
                 rem[n-1] = 1
         
-        return rem.index(0)+1 if sum(rem) != len(nums) else nmax+1
+        return rem.index(0) + 1 if sum(rem) != len(nums) else nmax+1
