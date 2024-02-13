@@ -2,7 +2,6 @@ class Solution:
     def isMatch(self, s: str, p: str) -> bool:
         @cache
         def recur(s, p):
-            
             if len(p) > 1 and p[1] == "*" and recur(s, p[2:]):
                 return True
             
@@ -10,7 +9,6 @@ class Solution:
                 return True
             elif not s or not p:
                 return False
-            
 
             if p[0] == ".":
                 if len(p) > 1 and p[1] == "*":
