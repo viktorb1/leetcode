@@ -1,5 +1,3 @@
-from queue import Queue
-
 class Solution:
     def rearrangeArray(self, nums: List[int]) -> List[int]:
         pos, neg = [], []
