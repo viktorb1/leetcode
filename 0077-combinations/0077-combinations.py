@@ -8,8 +8,8 @@ class Solution:
             if len(c) == k:
                 ans.append(c)
             else:
-                for i in range(i+1, n+1):
-                    dfs(i, c + [i])
+                for j in range(i+1, n+1):
+                    dfs(j, c + [j])
         
         dfs(0, [])
         return ans
