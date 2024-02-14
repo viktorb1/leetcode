@@ -7,10 +7,9 @@ class Solution:
             
             if len(c) == k:
                 ans.append(c)
-                return
-            
-            for i in range(i+1, n+1):
-                dfs(i, c + [i])
+            else:
+                for i in range(i+1, n+1):
+                    dfs(i, c + [i])
         
         dfs(0, [])
         return ans
