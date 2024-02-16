@@ -3,7 +3,6 @@ from queue import PriorityQueue
 class Solution:
     def findLeastNumOfUniqueInts(self, arr: List[int], k: int) -> int:
         c = Counter(arr)
-        unique_count = len(c)
         pq = PriorityQueue()
         
         for key, val in c.items():
@@ -13,9 +12,9 @@ class Solution:
             val, key = pq.get()
             
             if k >= val:
-                unique_count -= 1
+                del c[key]
                 k -= val
             else:
                 break
         
-        return unique_count
+        return len(c)
