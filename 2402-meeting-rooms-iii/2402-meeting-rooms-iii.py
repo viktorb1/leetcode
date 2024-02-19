@@ -6,16 +6,16 @@ class Solution:
         meetings.sort()
         
         for s, e in meetings:
-            while occupied and s >= occupied[0][0]: # put all meetings that ended back into available
-                end, room = heappop(occupied)
+            while occupied and s >= occupied[0][0]:
+                _, room = heappop(occupied)
                 heappush(available, room)
             
-            if available: # use the lowest number room if a room is free
+            if available:
                 room = heappop(available)
                 heappush(occupied, (e, room))
-            else: # use the room that ends the soonest if all rooms are taken
-                time, room = heappop(occupied)
-                heappush(occupied, (time + (e - s), room))
+            else:
+                end, room = heappop(occupied)
+                heappush(occupied, (end + (e-s), room))
             
             count[room] += 1
         
