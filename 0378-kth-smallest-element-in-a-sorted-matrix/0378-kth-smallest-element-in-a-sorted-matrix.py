@@ -1,13 +1,25 @@
 class Solution:
     def kthSmallest(self, matrix: List[List[int]], k: int) -> int:
-        min_heap = []
-        r, c = len(matrix), len(matrix[0])
+        m, n = len(matrix), len(matrix[0])
+        ans = None
         
-        for i in range(min(k, r)):
-            heappush(min_heap, (matrix[i][0], i, 0))
+        def countLessOrEqual(x):
+            total = 0
+            c = n - 1
+            for r in range(m):
+                while c >= 0 and matrix[r][c] > x: c -= 1
+                total += (c+1)
+            return total
+    
+        l, h = matrix[0][0], matrix[-1][-1]
         
-        for _ in range(k):
-            ans, row, col = heappop(min_heap)
-            if col + 1 < c: heappush(min_heap, (matrix[row][col+1], row, col+1))
+        while l <= h:
+            mid = (l+h) // 2
+            
+            if countLessOrEqual(mid) >= k:
+                ans = mid
+                h = mid - 1
+            else:
+                l = mid + 1
         
         return ans
