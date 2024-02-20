@@ -10,14 +10,12 @@ class Solution:
                 ans.append(path)
                 return
             
-            
             for c in range(n):
                 cols[r] = c
                 
                 if is_valid(cols, r):
                     row = "." * n
                     dfs(cols, path + [row[:c] + "Q" + row[c+1:]])
-                    
         
         def is_valid(cols, r):
             for i in range(r):
