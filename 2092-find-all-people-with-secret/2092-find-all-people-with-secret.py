@@ -1,20 +1,35 @@
+class UnionFind:
+
+	def __init__(self, n: int):
+		self.parent = list(range(n))
+		self.rank = [1] * n
+
+	def find(self, p: int) -> int:
+		"""Find with path compression"""
+		if p != self.parent[p]:
+			self.parent[p] = self.find(self.parent[p])
+		return self.parent[p]
+
+	def union(self, p: int, q: int) -> bool:
+		"""Union with rank"""
+		prt, qrt = self.find(p), self.find(q)
+		if prt == qrt: return False
+		if self.rank[prt] > self.rank[qrt]: prt, qrt = qrt, prt 
+		self.parent[prt] = qrt
+		self.rank[qrt] += self.rank[prt]
+		return True
+
+
 class Solution:
     def findAllPeople(self, n: int, meetings: List[List[int]], firstPerson: int) -> List[int]:
-        q = [(0, 0), (0, firstPerson)]
-        graph = defaultdict(list)
-        
-        for p1, p2, t in meetings:
-            graph[p1].append((p2, t))
-            graph[p2].append((p1, t))
-        
-        seen = [inf] * n
-        while q:
-            t, p1 = heappop(q)
-            seen[p1] = t
-            
-            for p2, mt in graph[p1]:
-                if mt >= t and seen[p2] > mt:
-                    seen[p2] = mt
-                    heappush(q, (mt, p2))
-        
-        return [i for i,v in enumerate(seen) if v != inf]
+        uf = UnionFind(n)
+        uf.union(0, firstPerson)
+        for _, grp in groupby(sorted(meetings, key=lambda x: x[2]), key=lambda x: x[2]): 
+            seen = set()
+            for x, y, _ in grp: 
+                seen.add(x)
+                seen.add(y)
+                uf.union(x, y)
+            for x in seen: 
+                if uf.find(x) != uf.find(0): uf.parent[x] = x # reset 
+        return [x for x in range(n) if uf.find(x) == uf.find(0)]
