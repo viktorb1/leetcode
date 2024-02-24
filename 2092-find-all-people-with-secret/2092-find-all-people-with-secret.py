@@ -10,7 +10,6 @@ class Solution:
         earliest[0] = 0
         earliest[firstPerson] = 0
 
-        # Do DFS
         def dfs(person, time):
             for t, nextPerson in graph[person]:
                 if t >= time and earliest[nextPerson] > t:
