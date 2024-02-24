@@ -1,11 +1,11 @@
 class Solution:
     def findAllPeople(self, n: int, meetings: List[List[int]], firstPerson: int) -> List[int]:
         q = [(0, 0), (0, firstPerson)]
-        graph = defaultdict(list)
+        graph = defaultdict(set)
         
         for p1, p2, t in meetings:
-            graph[p1].append((p2, t))
-            graph[p2].append((p1, t))
+            graph[p1].add((p2, t))
+            graph[p2].add((p1, t))
         
         seen = set()
         while q:
