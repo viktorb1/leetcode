@@ -19,7 +19,3 @@ class Solution:
                     heappush(q, (mt, p2))
         
         return seen
-        
-        
-        
-        return know
