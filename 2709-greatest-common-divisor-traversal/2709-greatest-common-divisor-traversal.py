@@ -2,7 +2,8 @@ class Solution:
     def canTraverseAllPairs(self, nums: List[int]) -> bool:
         if len(nums) == 1: return True
         if 1 in nums: return False
-        nums = sorted(set(nums), reverse=True)
+        # nums = sorted(set(nums), reverse=True)
+        nums = list(set(nums))
         if (n:=len(nums))==1 : return True
 
         for i in range(n-1):
