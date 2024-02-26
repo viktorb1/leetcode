@@ -5,7 +5,6 @@ class Solution:
         o = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"]
         d = ["Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"]
         
-        if not num: return "Zero"
         num = str(num)[::-1]
         ans = deque()
         
@@ -33,4 +32,4 @@ class Solution:
             if section:
                 ans.appendleft(' '.join(section))
             
-        return ' '.join(ans).strip()
+        return ' '.join(ans).strip() or "Zero"
