@@ -32,4 +32,4 @@ class Solution:
             if section:
                 ans.appendleft(' '.join(section))
             
-        return ' '.join(ans).strip() or "Zero"
+        return ' '.join(ans) or "Zero"
