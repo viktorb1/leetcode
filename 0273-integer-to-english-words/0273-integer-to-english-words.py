@@ -11,7 +11,7 @@ class Solution:
         for i in range(0, len(num), 3):
             x = int(num[i+2]) if i+2 < len(num) else 0
             y = int(num[i+1]) if i+1 < len(num) else 0
-            z = int(num[i]) if i < len(num) else 0
+            z = int(num[i])
             section = []
             
             if x > 0: 
