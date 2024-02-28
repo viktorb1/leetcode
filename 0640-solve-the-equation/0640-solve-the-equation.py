@@ -1,31 +1,22 @@
-import re
-
 class Solution:
     def solveEquation(self, equation: str) -> str:
         def parse_eq(equation):
-            x_sum, num_sum = 0, 0
+            sums = [0, 0] # x_sum, number_sum 
             for section in equation.split('+'):
                 split = section.split('-')
-                x_diff, num_diff = grab_num(split[0])
-                x_sum += x_diff
-                num_sum += num_diff
-
+                update_totals(split[0], sums, 1)
                 for chunk in split[1:]:
-                    x_diff, num_diff = grab_num(chunk)
-                    x_sum -= x_diff
-                    num_sum -= num_diff
-            
-            return x_sum, num_sum
+                    update_totals(chunk, sums, -1)
+            return sums
         
-        def grab_num(chunk, x_sum = 0, num_sum = 0):
-            try:
-                return (0, int(chunk))
-            except:
-                try:
-                    return (int(chunk[:-1]), 0)
-                except:
-                    return (1, 0) if chunk else (0, 0)
-        
+        def update_totals(chunk, sums, sign):
+            if chunk.isdigit():
+                sums[1] += sign*int(chunk)
+            elif chunk[:-1].isdigit():
+                sums[0] += sign*int(chunk[:-1])
+            elif chunk:
+                print(chunk, sums, sign)
+                sums[0] += sign*1
         
         left, right = equation.split('=')
         l_x_sum, l_num_sum = parse_eq(left)
