@@ -3,9 +3,9 @@ class Solution:
         def parse_eq(equation):
             sums = [0, 0] # x_sum, number_sum 
             for section in equation.split('+'):
-                split = section.split('-')
-                update_totals(split[0], sums, 1)
-                for chunk in split[1:]:
+                chunks = section.split('-')
+                update_totals(chunks[0], sums, 1)
+                for chunk in chunks[1:]:
                     update_totals(chunk, sums, -1)
             return sums
         
