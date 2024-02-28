@@ -2,35 +2,34 @@ import re
 
 class Solution:
     def solveEquation(self, equation: str) -> str:
-        def parseEq(equation):
+        def parse_eq(equation):
             x_sum, num_sum = 0, 0
             for section in equation.split('+'):
                 split = section.split('-')
-                x_diff, num_diff = add(split[0])
+                x_diff, num_diff = grab_num(split[0])
                 x_sum += x_diff
                 num_sum += num_diff
 
                 for chunk in split[1:]:
-                    x_diff, num_diff = add(chunk)
+                    x_diff, num_diff = grab_num(chunk)
                     x_sum -= x_diff
                     num_sum -= num_diff
             
             return x_sum, num_sum
         
-        def add(chunk, x_sum = 0, num_sum = 0):
-            if chunk == "": return 0, 0
+        def grab_num(chunk, x_sum = 0, num_sum = 0):
             try:
-                return 0, int(chunk)
+                return (0, int(chunk))
             except:
                 try:
-                    return int(chunk[:-1]), 0
+                    return (int(chunk[:-1]), 0)
                 except:
-                    return 1, 0
+                    return (1, 0) if chunk else (0, 0)
         
         
         left, right = equation.split('=')
-        l_x_sum, l_num_sum = parseEq(left)
-        r_x_sum, r_num_sum = parseEq(right)
+        l_x_sum, l_num_sum = parse_eq(left)
+        r_x_sum, r_num_sum = parse_eq(right)
         
         if l_x_sum == r_x_sum and l_num_sum == r_num_sum:
             return "Infinite solutions"
