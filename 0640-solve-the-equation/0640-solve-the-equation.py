@@ -10,11 +10,11 @@ class Solution:
             return sums
         
         def update_totals(chunk, sums, sign):
-            if chunk.isdigit():
+            if chunk.isdigit(): # chunk is a number
                 sums[1] += sign*int(chunk)
-            elif chunk[:-1].isdigit():
+            elif chunk[:-1].isdigit(): # chunk is a variable
                 sums[0] += sign*int(chunk[:-1])
-            elif chunk:
+            elif chunk: # chunk is a variable with a '1'
                 sums[0] += sign*1
         
         left, right = equation.split('=')
