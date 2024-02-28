@@ -6,10 +6,10 @@
 #         self.right = right
 class Solution:
     def findBottomLeftValue(self, root: Optional[TreeNode]) -> int:
-        queue = deque([root])
         if not root.left and not root.right:
             return root.val
 
+        queue = deque([root])
         leftmost = None
         
         while queue:
