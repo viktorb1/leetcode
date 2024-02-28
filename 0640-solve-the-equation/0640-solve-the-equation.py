@@ -15,7 +15,6 @@ class Solution:
             elif chunk[:-1].isdigit():
                 sums[0] += sign*int(chunk[:-1])
             elif chunk:
-                print(chunk, sums, sign)
                 sums[0] += sign*1
         
         left, right = equation.split('=')
