@@ -7,23 +7,23 @@
 class Solution:
     def isEvenOddTree(self, root: Optional[TreeNode]) -> bool:
         q = deque([root])
-        level = 0
+        is_odd = False
         
         while q:
             prev = None
             for _ in range(len(q)):
                 n = q.popleft()
-                if n.val % 2 == level % 2:
+                if n.val % 2 == is_odd:
                     return False
-                if prev and level % 2 and prev <= n.val:
+                if prev and is_odd and prev <= n.val:
                     return False
-                if prev and not level % 2 and prev >= n.val:
+                if prev and not is_odd and prev >= n.val:
                     return False
                 if n.left: 
                     q.append(n.left)
                 if n.right: 
                     q.append(n.right)
                 prev = n.val
-            level += 1
+            is_odd = not is_odd
         
         return True
