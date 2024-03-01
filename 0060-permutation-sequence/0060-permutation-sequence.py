@@ -1,20 +1,20 @@
 class Solution:
     def getPermutation(self, n: int, k: int) -> str:
         nums = [str(i+1) for i in range(n)]
-        solutions = []
+        count = 0        
         
-        
-        def dfs(arr, ans=tuple()):
-            nonlocal solutions
-            if len(solutions) >= k:
-                return
+        def dfs(arr, ans=[]):
+            nonlocal count, nums
             if len(ans) == len(nums):
-                solutions.append(ans)
-                return
+                if count == k-1:
+                    return ans
+                else:
+                    count += 1
+                    return
 
-            
             for i, choose in enumerate(arr):
-                dfs(arr[:i] + arr[i+1:], ans + (choose,))
+                result = dfs(arr[:i] + arr[i+1:], ans + [choose])
+                if result: return result
         
-        dfs(tuple(nums))
-        return "".join(solutions[k-1])
+        
+        return ''.join(dfs(nums))
