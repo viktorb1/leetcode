@@ -3,7 +3,8 @@ class Solution:
         nums = [str(i+1) for i in range(n)]
         count = 0        
         
-        def dfs(arr, ans=[]):
+        
+        def dfs(arr, ans=""):
             nonlocal count, nums
             if len(ans) == len(nums):
                 if count == k-1:
@@ -13,8 +14,7 @@ class Solution:
                     return
 
             for i, choose in enumerate(arr):
-                result = dfs(arr[:i] + arr[i+1:], ans + [choose])
+                result = dfs(arr[:i] + arr[i+1:], ans + choose)
                 if result: return result
         
-        
-        return ''.join(dfs(nums))
+        return dfs(nums)
