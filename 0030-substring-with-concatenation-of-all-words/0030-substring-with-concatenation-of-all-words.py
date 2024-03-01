@@ -6,11 +6,9 @@ class Solution:
 
         for offset in range(n):
             s_split = [s[i:i+n] for i in range(offset, len(s), n)]
-            i = 0
-            while i+len(words) <= len(s_split):
+            for i in range(len(s_split)-len(words)+1):
                 c2 = Counter(s_split[i:i+len(words)])
                 if c1 == c2: sol.append(i*n + offset)
-                i += 1
         
         return sol
         
