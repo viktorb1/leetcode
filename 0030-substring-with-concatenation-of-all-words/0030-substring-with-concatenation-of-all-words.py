@@ -8,14 +8,11 @@ class Solution:
         for offset in range(n):
             s_mod = [s[i:i+n] for i in range(offset, len(s), n)]
 
-            for i, w in enumerate(s_mod):
-                if i+len(words) > len(s_mod):
-                    break
-
+            i = 0
+            while i+len(words) <= len(s_mod):
                 c2 = Counter(s_mod[i:i+len(words)])
-
-                if c1 == c2:
-                    sol.append(i*n + offset)
+                if c1 == c2: sol.append(i*n + offset)
+                i += 1
         
         return sol
         
