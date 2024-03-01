@@ -3,7 +3,8 @@ class Solution:
         nums = [str(i+1) for i in range(n)]
         solutions = []
         
-        def dfs(arr, ans=[]):
+        
+        def dfs(arr, ans=tuple()):
             nonlocal solutions
             if len(solutions) >= k:
                 return
@@ -13,7 +14,7 @@ class Solution:
 
             
             for i, choose in enumerate(arr):
-                dfs(arr[:i] + arr[i+1:], ans + [choose])
+                dfs(arr[:i] + arr[i+1:], ans + (choose,))
         
-        dfs(nums)
+        dfs(tuple(nums))
         return "".join(solutions[k-1])
