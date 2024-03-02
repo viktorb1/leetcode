@@ -13,7 +13,7 @@ class Solution:
             for i, n in enumerate(heights):
                 start = i
                 
-                while stack and stack[-1][1] > n:
+                while stack and stack[-1][1] >= n:
                     h_start, height = stack.pop()
                     w = i - h_start
                     ans = max(ans, w * height)
