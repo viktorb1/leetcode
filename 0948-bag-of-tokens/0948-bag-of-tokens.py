@@ -5,12 +5,12 @@ class Solution:
         tokens = deque(tokens)
             
         while tokens:
-            if power >= tokens[0] and tokens:
+            if power >= tokens[0]:
                 power -= tokens[0]
                 tokens.popleft()
                 score += 1
                 ans = max(ans, score)
-            elif score > 0 and tokens:
+            elif score > 0:
                 power += tokens[-1]
                 tokens.pop()
                 score -= 1
