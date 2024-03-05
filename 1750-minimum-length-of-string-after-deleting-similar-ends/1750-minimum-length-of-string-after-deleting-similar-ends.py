@@ -9,5 +9,4 @@ class Solution:
             while s[r] == s[l-1] and l <= r:
                 r -= 1
 
-        
         return r - l + 1
