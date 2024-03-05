@@ -13,6 +13,4 @@ class Solution:
             if s[r] != s[l]:
                 break
         
-        r += 1
-        l -= 1
-        return len(s) - (len(s) - r) - (l+1)
+        return len(s) - (len(s) - r - 1) - l
