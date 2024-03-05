@@ -20,6 +20,7 @@ class Solution:
                     if i in seen: continue
                     seen.add(i)
                     for bus_stop_neighbor in routes[i]:
+                        if bus_stop_neighbor == bus_stop: continue
                         if bus_stop_neighbor == target:
                             return count
                         else:
