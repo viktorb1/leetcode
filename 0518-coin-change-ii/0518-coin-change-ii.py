@@ -1,13 +1,9 @@
 class Solution:
-    def change(self, amount: int, coins: List[int]) -> int:        
-        @cache
-        def dfs(total, i=0):            
-            if total == 0:
-                return 1
-            
-            if total < 0 or i == len(coins):
-                return 0
+    def change(self, amount: int, coins: List[int]) -> int:
+        dp = [1] + [0] * amount
 
-            return dfs(total - coins[i], i) + dfs(total, i+1)
-        
-        return dfs(amount)
+        for c in coins:
+           for i in range(c, amount + 1):
+               dp[i] += dp[i - c]
+
+        return dp[amount] 
