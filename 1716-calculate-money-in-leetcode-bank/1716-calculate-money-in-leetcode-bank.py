@@ -6,7 +6,6 @@ class Solution:
         
         for w in range(weeks):
             if w == weeks-1: m = n % 7
-            
             total += w*m + (m*(m+1))//2
         
         return total
