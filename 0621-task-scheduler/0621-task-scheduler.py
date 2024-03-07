@@ -13,7 +13,8 @@ class Solution:
                     bench.append((cur + 1, time + n)) 
                     # we sit out the task until it becomes available again at time time+n 
             
-            while bench and bench[0][1] == time:
+            # remove all elements from bench that can be used again
+            while bench and bench[0][1] == time: 
                 heappush(tasks, bench.popleft()[0])
 
         return time
