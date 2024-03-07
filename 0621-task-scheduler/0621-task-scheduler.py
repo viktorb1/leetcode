@@ -8,9 +8,9 @@ class Solution:
             time += 1
 
             if tasks:
-                cur = heappop(tasks)
-                if cur + 1 < 0:
-                    bench.append((cur + 1, time + n)) 
+                f = heappop(tasks)
+                if f + 1 < 0:
+                    bench.append((f + 1, time + n)) 
                     # we sit out the task until it becomes available again at time time+n 
             
             # remove all elements from bench that can be used again
