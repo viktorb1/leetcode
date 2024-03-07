@@ -1,7 +1,6 @@
 class Solution:
     def leastInterval(self, tasks: List[str], n: int) -> int:
-        tasks = [-f for f in Counter(tasks).values()]
-        heapify(tasks)
+        tasks = sorted([-f for f in Counter(tasks).values()]) # how many times the task repeats
         bench = deque()
         time = 0
 
