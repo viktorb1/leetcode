@@ -13,7 +13,7 @@ class Solution:
                     bench.append((cur + 1, time + n)) 
                     # we sit out the task until it becomes available again at time time+n 
             
-            if bench and bench[0][1] == time:
+            while bench and bench[0][1] == time:
                 heappush(tasks, bench.popleft()[0])
 
         return time
