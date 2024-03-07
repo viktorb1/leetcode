@@ -9,9 +9,8 @@ class Solution:
 
             if tasks:
                 cur = heappop(tasks)
-                cur += 1
-                if cur < 0:
-                    bench.append((cur, time + n))
+                if cur + 1 < 0:
+                    bench.append((cur + 1, time + n))
             
             if bench and bench[0][1] == time:
                 heappush(tasks, bench.popleft()[0])
