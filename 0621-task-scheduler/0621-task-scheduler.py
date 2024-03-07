@@ -10,7 +10,8 @@ class Solution:
             if tasks:
                 cur = heappop(tasks)
                 if cur + 1 < 0:
-                    bench.append((cur + 1, time + n))
+                    bench.append((cur + 1, time + n)) 
+                    # we sit out the task until it becomes available again at time time+n 
             
             if bench and bench[0][1] == time:
                 heappush(tasks, bench.popleft()[0])
