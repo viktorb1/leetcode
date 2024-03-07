@@ -6,13 +6,13 @@ class Solution:
         cur_time = 0
         
         while q:
-            c = max([(t, v, k) for t, v, k in q if t <= cur_time], key=lambda x: -x[1], default=None)
+            t = q[0][0]
             
-            if c:
-                q.remove(c)
+            if t <= cur_time:
+                t, v, k = max([(t, v, k) for t, v, k in q if t <= cur_time], key=lambda x: -x[1])
+                q.remove((t, v, k))
                 heapify(q)
-                t, v, k = c
-
+                
                 if v+1 < 0:
                     heappush(q, (cur_time + n + 1, v+1, k))
             
