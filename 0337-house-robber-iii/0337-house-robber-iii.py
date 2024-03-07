@@ -9,9 +9,8 @@ class Solution:
         @cache
         def inorder(node, must_skip=False):
             if not node: return 0
-
-            a = node.val + inorder(node.left, True) + inorder(node.right, True) if not must_skip else 0
-            b = inorder(node.left) + inorder(node.right)
-            return max(a, b)
+            include = node.val + inorder(node.left, True) + inorder(node.right, True) if not must_skip else 0
+            skip = inorder(node.left) + inorder(node.right)
+            return max(include, skip)
         
         return max(inorder(root), inorder(root, True))
