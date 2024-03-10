@@ -11,7 +11,5 @@ class Solution:
             for k, v in d.items():
                 if v > 1:
                     total += (v * (v-1))
-
-                
         
         return total
